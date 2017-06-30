@@ -22,10 +22,8 @@ public class TestMain {
 		grupo.getEntregables().add(new Entregable());
 		grupo.getEntregables().add(new Entregable());
 		HibernateDAO.getInstancia().persistir(grupo);
-		System.out.println(grupo.getEstadoTP());
-		
-		
-		
+		System.out.println(grupo.getEstadoTP());	
+		System.out.println(grupo.getTituloTP());	
 	}
 
 }
