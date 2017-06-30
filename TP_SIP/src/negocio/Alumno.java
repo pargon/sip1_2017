@@ -12,6 +12,17 @@ public class Alumno{
 	private String apellido;
 	private String notaA;
 	private String notaB;
+	
+	public Alumno() {}
+	
+	public Alumno(int lu, String nombre, String apellido, String notaA, String notaB) {
+		super();
+		this.lu = lu;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.notaA = notaA;
+		this.notaB = notaB;
+	}
 	public int getLu() {
 		return lu;
 	}
