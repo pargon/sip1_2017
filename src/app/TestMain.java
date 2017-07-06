@@ -11,7 +11,6 @@ public class TestMain {
 		// TODO Auto-generated method stub
 		
 		HibernateDAO.getInstancia().persistir(new Grupo(2,"Pachano"));
-		
 		Grupo grupo = ControladorEntregables.getInstancia().buscarGrupoPorNumero(2);
 		grupo.getIntegrantes().add(new Alumno(1020123,"Facundo","Arias",null,null));
 		grupo.getIntegrantes().add(new Alumno(1212123,"Facundo","Arias",null,null));
