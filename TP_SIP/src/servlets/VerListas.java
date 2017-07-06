@@ -47,8 +47,5 @@ public class VerListas extends HttpServlet{
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
-	}
-	
-
-	
+	}	
 }

@@ -174,7 +174,7 @@ public class Controlador {
 		EntregableEstructura ent;
 
 		ent = new EntregableEstructura();
-		ent.setFechaEntrega(new Date());
+	//	ent.setFechaEntrega(new Date());
 		ent.setNombre("entregable A");
 		ent.setNroOrden(1);
 		HibernateDAO.getInstancia().persistir(ent);		
@@ -182,7 +182,7 @@ public class Controlador {
 		listEnt.add(ent);
 		
 		ent = new EntregableEstructura();
-		ent.setFechaEntrega(new Date());
+		//ent.setFechaEntrega(new Date());
 		ent.setNombre("entregable B");
 		ent.setNroOrden(2);
 		HibernateDAO.getInstancia().persistir(ent);		
@@ -190,7 +190,7 @@ public class Controlador {
 		listEnt.add(ent);
 		
 		ent = new EntregableEstructura();
-		ent.setFechaEntrega(new Date());
+		//ent.setFechaEntrega(new Date());
 		ent.setNombre("entregable C");
 		ent.setNroOrden(3);
 		HibernateDAO.getInstancia().persistir(ent);		
@@ -204,15 +204,4 @@ public class Controlador {
 		return eta;
 	}
 	
-	public List<Grupo> getGrupos(){
-		List<Grupo> grupos = HibernateDAO.GetInstancia().getList("from grupo");
-		return grupos;
-	}
-	
-	public List<Entregable> getEntregablesPorIteracion(int iteracion, int nGrupo){
-		List<Entregable> entregables = HibernateDAO.GetInstancia().getList(
-				"from entregable e where e.entregableestructura.etapa.iteracion.nroOrden = " + iteracion +
-				" and entregable.grupo.nroGrupo = " + nGrupo);
-		return entregables;
-	}
 }
