@@ -1,4 +1,5 @@
 package app;
+import dto.GrupoDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -202,6 +203,11 @@ public class Controlador {
 		HibernateDAO.getInstancia().persistir(eta);		
 
 		return eta;
+	}
+
+	public List<GrupoDTO> getGrupos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

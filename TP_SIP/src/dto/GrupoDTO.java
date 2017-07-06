@@ -1,2 +1,10 @@
 package dto;
-//ahora que veo como están hechas las clases de negocio, me parece que esto no va
+
+public class GrupoDTO {
+
+	private int nroGrupo;
+	
+	public int getNumero(){
+		return nroGrupo;
+	}
+}

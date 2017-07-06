@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import app.Controlador;
 
-@WebServlet("/ListarIntegrantes")
+@WebServlet("/VerListas")
 public class VerListas extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -23,12 +23,13 @@ public class VerListas extends HttpServlet{
 		
 		String valor = req.getParameter("action");
 		String destino = "inicio.jsp";
-		
 		Controlador ctr = new Controlador();
 		
 		
 		switch(valor ){
 		case "VerGrupos":{
+
+			List<GrupoDTO> lg = ctr.getGrupos();
 			
 			destino = "VerGrupos.jsp";
 			break;}
