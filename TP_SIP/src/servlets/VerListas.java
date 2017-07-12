@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import app.Controlador;
+import app.CtrGrupos;
 
 @WebServlet("/VerListas")
 public class VerListas extends HttpServlet{
@@ -23,14 +24,14 @@ public class VerListas extends HttpServlet{
 		
 		String valor = req.getParameter("action");
 		String destino = "inicio.jsp";
-		Controlador ctr = new Controlador();
+		CtrGrupos ctr = new CtrGrupos();
 		
 		
 		switch(valor ){
 		case "VerGrupos":{
 
-			List<GrupoDTO> lg = ctr.getGrupos();
-			
+			List<Integer> lg = ctr.getGrupos();
+			req.setAttribute("listgrupo", lg);
 			destino = "VerGrupos.jsp";
 			break;}
 		
