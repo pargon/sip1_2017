@@ -15,7 +15,7 @@
 		<td><input type="submit" name="action" value="VerGrupos"></td>
 	</tr>
 	<tr>
-		<td> Estructura </td>
+		<td> Trabajo Práctico </td>
 		<td><input type="submit" name="action" value="VerEstruc"></td>
 	</tr>
 

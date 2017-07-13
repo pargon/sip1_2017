@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.GrupoDTO;
-import app.Controlador;
 import app.ControladorGrupos;
 
 @WebServlet("/VerListas")
@@ -39,7 +38,19 @@ public class VerListas extends HttpServlet{
 		
 		case "VerEstruc":{
 			destino = "VerEstructura.jsp";
+			break;}
+		
+		case "NotaA":{
+			destino = "VerEstructura.jsp";
+			break;}
+		
+		case "NotaB":{
+			destino = "VerEstructura.jsp";
 			break;}		
+		case "NotaFinal":{
+			destino = "VerEstructura.jsp";
+			break;}		
+		
 		}
 		
 		RequestDispatcher rd = req.getRequestDispatcher(destino);
