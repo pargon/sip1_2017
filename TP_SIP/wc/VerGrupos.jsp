@@ -14,8 +14,8 @@
 
 <thead> <tr>
 		<td>Grupo </td>
-		<td>LU</td>
-		<td>Nombre</td>
+		<td>Estado</td>
+		<td>Título TP</td>
 		</tr>
 </thead>
 
@@ -24,6 +24,8 @@
 %>
 <tr>
 	<td><%= gd.getNroGrupo() %></td>
+	<td><%= gd.getEstadoTP() %></td>
+	<td><%= gd.getTituloTP() %></td>			
 </tr>
 	
 <%} %>

@@ -1,6 +1,7 @@
 package negocio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +33,15 @@ public class DocumentoFinal implements Serializable{
 	@JoinColumn(name="iddocfinal")
 	private List<ObservacionFinal> observaciones;
 	
+	
+	public DocumentoFinal() {
+		super();
+		nota = 0;
+		fechaEntrega = null;
+		estado = "En Curso";
+		archivos = new ArrayList<Archivo>();
+		observaciones = new ArrayList<ObservacionFinal>();
+	}
 	public int getNota() {
 		return nota;
 	}

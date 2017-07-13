@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.GrupoDTO;
 import app.Controlador;
+import app.ControladorGrupos;
 
 @WebServlet("/VerListas")
 public class VerListas extends HttpServlet{
@@ -25,7 +26,7 @@ public class VerListas extends HttpServlet{
 		
 		String valor = req.getParameter("action");
 		String destino = "inicio.jsp";
-		Controlador ct = new Controlador();
+		ControladorGrupos ct = new ControladorGrupos();
 		
 		
 		switch(valor ){

@@ -11,11 +11,11 @@
 <table>
 	
 	<tr>
-		<td> Clientes </td>
+		<td> Grupos </td>
 		<td><input type="submit" name="action" value="VerGrupos"></td>
 	</tr>
 	<tr>
-		<td> Vehiculos </td>
+		<td> Estructura </td>
 		<td><input type="submit" name="action" value="VerEstruc"></td>
 	</tr>
 

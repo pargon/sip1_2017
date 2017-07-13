@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import dto.AlumnoDTO;
+import dto.GrupoDTO;
+
 @Entity
 public class Grupo implements Serializable{
 
@@ -51,7 +54,7 @@ public class Grupo implements Serializable{
 		this.tituloTP = tituloTP;
 		integrantes = new ArrayList<Alumno>();
 		entregables =new ArrayList<Entregable>();
-		docFinal = null;
+		docFinal = new DocumentoFinal();
 	}
 	
 	public int getNroGrupo() {
@@ -100,6 +103,43 @@ public class Grupo implements Serializable{
 
 	public void setDocFinal(DocumentoFinal docFinal) {
 		this.docFinal = docFinal;
+	}
+
+	public GrupoDTO toDTO() {
+		
+		//
+		// armo lista alumnos dtos
+		//
+		List<AlumnoDTO> intDTO = new ArrayList<AlumnoDTO>();
+		
+		for(Alumno alu: integrantes){
+			AlumnoDTO ad = new AlumnoDTO(alu.getLu(), alu.getNombre(), alu.getApellido(), alu.getNotaA(), alu.getNotaB());
+			intDTO.add(ad);
+		}
+		
+		//
+		// armo lista archivos del doc. final
+		//
+		List<String> arcDocFinDTO = new ArrayList<String>();
+		
+		for(Archivo arc: docFinal.getArchivos()){
+			String arcd = arc.getNombre();
+			arcDocFinDTO.add(arcd);
+		}
+		
+		//
+		// armo lista observaciones del doc. final
+		//
+		List<String> obsDocFinDTO = new ArrayList<String>();
+		
+		for(ObservacionFinal obs: docFinal.getObservaciones() ){			
+			String obsd = obs.getComentario();
+			obsDocFinDTO.add(obsd);
+		}
+		
+		// crea el DTO
+		GrupoDTO gd = new GrupoDTO(nroGrupo, estadoTP, tituloTP, intDTO, docFinal.getNota(), docFinal.getFechaEntrega(), docFinal.getEstado(), arcDocFinDTO, obsDocFinDTO);
+		return gd;
 	}
 	
 }

@@ -26,21 +26,7 @@ public class Controlador {
 		docentes = new ArrayList<Docente>();
 		
 		testClases();
-	}
-	@SuppressWarnings("unchecked")
-	public List<GrupoDTO> getGrupos() {
-		// TODO Auto-generated method stub
-		String sql = "select g.nroGrupo from Grupo g";
-		List<Integer> li = (List<Integer>) HibernateDAO.getInstancia().getList(sql);
-		List<GrupoDTO> lgt = new ArrayList<GrupoDTO>();
-		for(Integer i:li){
-			GrupoDTO gt = new GrupoDTO();
-			gt.setNroGrupo(i);
-			lgt.add(gt);			
-		}
-		return lgt;
-	}
-	
+	}	
 
 	private void testClases() {
 
