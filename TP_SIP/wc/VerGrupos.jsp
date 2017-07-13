@@ -23,8 +23,7 @@
 	for(GrupoDTO gd: (List<GrupoDTO>) request.getAttribute("listgrupo") ){
 %>
 <tr>
-	<td><%= gd.getNumero() %></td>
-	<td><%= gd.getNombre() %></td>
+	<td><%= gd.getNroGrupo() %></td>
 </tr>
 	
 <%} %>

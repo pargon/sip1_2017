@@ -6,16 +6,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Grupo implements Serializable{
@@ -30,36 +26,34 @@ public class Grupo implements Serializable{
 	private String estadoTP;
 	private String tituloTP;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(name="idgrupo")
 	private List<Alumno> integrantes;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(name="idgrupo")
 	private List<Entregable> entregables;
 	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="iddocfinal")
 	private DocumentoFinal docFinal;
-	
+
 	public Grupo() {
-		this.integrantes = new ArrayList<>();
-		this.entregables = new ArrayList<>();
+		this.integrantes = new ArrayList<Alumno>();
+		this.entregables = new ArrayList<Entregable>();
 		this.docFinal = new DocumentoFinal();
 	}
-	
-	
+
 	public Grupo(int nroGrupo, String tituloTP) {
 		super();
 		this.estadoTP = "Inicial";
 		this.nroGrupo = nroGrupo;
 		this.tituloTP = tituloTP;
+		integrantes = new ArrayList<Alumno>();
+		entregables =new ArrayList<Entregable>();
+		docFinal = null;
 	}
-
-
-
+	
 	public int getNroGrupo() {
 		return nroGrupo;
 	}

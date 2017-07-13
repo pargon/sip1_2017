@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import app.CtrGrupos;
+import dto.GrupoDTO;
+import app.Controlador;
 
 @WebServlet("/VerListas")
 public class VerListas extends HttpServlet{
@@ -24,14 +25,14 @@ public class VerListas extends HttpServlet{
 		
 		String valor = req.getParameter("action");
 		String destino = "inicio.jsp";
-		CtrGrupos ctr = new CtrGrupos();
+		Controlador ct = new Controlador();
 		
 		
 		switch(valor ){
 		case "VerGrupos":{
 
-			List<Integer> lg = ctr.getGrupos();
-			req.setAttribute("listgrupo", lg);
+			List<GrupoDTO> lgt = ct.getGrupos();
+			req.setAttribute("listgrupo", lgt);
 			destino = "VerGrupos.jsp";
 			break;}
 		

@@ -7,7 +7,6 @@ import negocio.Grupo;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 
 public class HibernateDAO {
@@ -41,50 +40,33 @@ public class HibernateDAO {
 		
 	}
 
+	public Object getUnique(String sql, String prm, Object obj){
+		Session s = getSesion();
+		return s.createQuery(sql).setParameter(prm, obj).uniqueResult();
+		
+	}
+	
 	public List<?> getList(String sql){
 		Session s = getSesion();
 		return s.createQuery(sql).list();
 	}
 
 	public void persistir(Object c) {
-		Session session = null;
-        Transaction tx = null;
-        try {
-        	session = sf.openSession();
-            tx = session.beginTransaction();
-            session.saveOrUpdate(c);
-            tx.commit();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            if (!tx.wasCommitted()) {
-                tx.rollback();
-            }
-            session.flush();
-            session.close();
-        }
+		Session s = getSesion();
+		s.beginTransaction();
+		s.saveOrUpdate(c);
+		s.getTransaction().commit();
 	}
-
+	
+	
 	public Grupo buscarGrupoPorNumero(int nroGrupo) {
-		Session session = null;
-        Transaction tx = null;
-        Grupo grupo = null;
-        try {
-            session = sf.openSession();
-            tx = session.beginTransaction();
-            grupo = (Grupo) session.createQuery("from Grupo where nroGrupo = :nro")
-                    .setInteger("nro", nroGrupo).uniqueResult();
-            tx.commit();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            if (!tx.wasCommitted()) {
-                tx.rollback();
-            }
-            session.flush();
-            session.close();
-        }
-        return grupo;
+		
+        
+        String sql = "from Grupo where nroGrupo = :nro";
+        String prm = "nro";
+        Integer obj = Integer.valueOf(nroGrupo);
+        Grupo g = (Grupo) getUnique(sql, prm, obj);
+        return g;
 	}
 	
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import dao.HibernateDAO;
 
-public class CtrGrupos {
+public class ControladorGrupos {
 	
 	@SuppressWarnings("unchecked")
 	public List<Integer> getGrupos() {

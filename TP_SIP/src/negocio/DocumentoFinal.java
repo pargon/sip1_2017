@@ -23,14 +23,15 @@ public class DocumentoFinal implements Serializable{
 	private int nota;
 	private Date fechaEntrega;
 	private String estado;
-	
 
 	@OneToMany
 	@JoinColumn(name="iddocfinal")
 	private List<Archivo> archivos;
+	
 	@OneToMany
 	@JoinColumn(name="iddocfinal")
 	private List<ObservacionFinal> observaciones;
+	
 	public int getNota() {
 		return nota;
 	}

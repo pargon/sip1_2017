@@ -1,21 +1,11 @@
 package negocio;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import enums.EstadoEntregable;
 
@@ -32,28 +22,27 @@ public class Entregable implements Serializable{
 	@Enumerated
 	private EstadoEntregable estado;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="identregable")
 	private Archivo archivo;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(name="identregable")
 	private List<ObservacionEntregable> observaciones;
 	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="identrestr")
 	private EntregableEstructura entregableestructura;
 
 	public Entregable() {
-		this.archivo = null;
-		this.observaciones = new ArrayList<>();
-		this.entregableestructura = null;
+		this.archivo = new Archivo();
+		this.observaciones = new ArrayList<ObservacionEntregable>();
+		this.entregableestructura = new EntregableEstructura();
 		this.estado = EstadoEntregable.NO_CARGADO;
 		this.fechaCarga = new Date();
+		
 	}
-
-
-
+	
 	public Date getFechaCarga() {
 		return fechaCarga;
 	}
@@ -61,18 +50,14 @@ public class Entregable implements Serializable{
 	public void setFechaCarga(Date fechaCarga) {
 		this.fechaCarga = fechaCarga;
 	}
-	
-	
 
 	public EstadoEntregable getEstado() {
 		return estado;
 	}
 
-
 	public void setEstado(EstadoEntregable estado) {
 		this.estado = estado;
 	}
-
 
 	public Archivo getArchivo() {
 		return archivo;
@@ -99,12 +84,7 @@ public class Entregable implements Serializable{
 	}
 
 	public int getId() {
+		// TODO Auto-generated method stub
 		return id;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	
 }

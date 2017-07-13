@@ -1,11 +1,11 @@
 package app;
-import dto.GrupoDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import dao.HibernateDAO;
+import dto.GrupoDTO;
 import negocio.Alumno;
 import negocio.Docente;
 import negocio.EntregableEstructura;
@@ -27,6 +27,20 @@ public class Controlador {
 		
 		testClases();
 	}
+	@SuppressWarnings("unchecked")
+	public List<GrupoDTO> getGrupos() {
+		// TODO Auto-generated method stub
+		String sql = "select g.nroGrupo from Grupo g";
+		List<Integer> li = (List<Integer>) HibernateDAO.getInstancia().getList(sql);
+		List<GrupoDTO> lgt = new ArrayList<GrupoDTO>();
+		for(Integer i:li){
+			GrupoDTO gt = new GrupoDTO();
+			gt.setNroGrupo(i);
+			lgt.add(gt);			
+		}
+		return lgt;
+	}
+	
 
 	private void testClases() {
 
@@ -175,7 +189,7 @@ public class Controlador {
 		EntregableEstructura ent;
 
 		ent = new EntregableEstructura();
-	//	ent.setFechaEntrega(new Date());
+		ent.setFechaEntrega(new Date());
 		ent.setNombre("entregable A");
 		ent.setNroOrden(1);
 		HibernateDAO.getInstancia().persistir(ent);		
@@ -183,7 +197,7 @@ public class Controlador {
 		listEnt.add(ent);
 		
 		ent = new EntregableEstructura();
-		//ent.setFechaEntrega(new Date());
+		ent.setFechaEntrega(new Date());
 		ent.setNombre("entregable B");
 		ent.setNroOrden(2);
 		HibernateDAO.getInstancia().persistir(ent);		
@@ -191,7 +205,7 @@ public class Controlador {
 		listEnt.add(ent);
 		
 		ent = new EntregableEstructura();
-		//ent.setFechaEntrega(new Date());
+		ent.setFechaEntrega(new Date());
 		ent.setNombre("entregable C");
 		ent.setNroOrden(3);
 		HibernateDAO.getInstancia().persistir(ent);		
@@ -204,10 +218,4 @@ public class Controlador {
 
 		return eta;
 	}
-
-	public List<GrupoDTO> getGrupos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

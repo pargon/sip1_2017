@@ -23,6 +23,7 @@ public class Alumno{
 		this.notaA = notaA;
 		this.notaB = notaB;
 	}
+
 	public int getLu() {
 		return lu;
 	}
