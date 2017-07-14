@@ -20,9 +20,11 @@
 		<td>LU Alumno</td>
 		<td>Ape. Alumno</td>
 		<td>Nom. Alumno</td>
-		<td>Asigna NotaA</td>				
-		<td>Asigna NotaB</td>
-		<td>Asigna NotaFinal</td>
+		<td>Nota A</td>
+		<td>Nota B</td>
+		<td>Estado TP</td>
+		<td>Fecha Doc.Final</td>
+		<td>Nota Doc.Final</td>
 		</tr>
 </thead>
 
@@ -39,15 +41,27 @@
 		<td><%= ad.getLu() %></td>
 		<td><%= ad.getApellido() %></td>
 		<td><%= ad.getNombre()  %></td>
-		<td><input type="submit" name="action" value="NotaA"></td>
-		<td><input type="submit" name="action" value="NotaB"></td>
-		<td><input type="submit" name="action" value="NotaFinal"></td>		
-</tr>
+		<td><%= ad.getNotaA()  %></td>
+		<td><%= ad.getNotaB()  %></td>
+		<td><%= gd.getEstadoTP() %></td>
+		<td><%= gd.getFechaEntregaDocFinal() %></td>
+		<td><%= gd.getNotaDocFinal() %></td>
 		
+</tr>
+
 <%} %>
 <%} %>
-	
 
 </table>
+<form action="AdmGrupo" method="get">
+<table border="1">
+	<tr><td>Nro. Grupo:</td><td><input type="text" name="nrogrupo"/></td></tr>
+	<tr><td>LU:</td><td><input type="text" name="lu"/></td></tr>
+	<tr><td>Nota A:</td><td><input type="text" name="valnotaA"/></td></tr>	
+	<tr><td>Nota B:</td><td><input type="text" name="valnotaB"/></td></tr>	
+	<tr><td>Nota Doc.Final:</td><td><input type="text" name="valnotafinal"/></td></tr>	
+	<tr><td colspan="2"><input type="submit" value="Puntuar"/></td></tr>
+</table>
+	
 </body>
 </html>

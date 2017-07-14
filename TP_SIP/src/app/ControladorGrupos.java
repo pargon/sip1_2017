@@ -22,5 +22,39 @@ public class ControladorGrupos {
 		}
 		return lgd;
 	}
+
+	public void puntuarNotaA(int nroGrupo, int lu, String notaA) {
+		
+		// recupera objeto grupo desde la base
+		Grupo g = ControladorEntregables.getInstancia().buscarGrupoPorNumero(nroGrupo);
+		
+		// setea la nota A al alumno 
+		g.setNotaA(lu, notaA);
+		
+		// guarda en la base el objeto cambiado
+		HibernateDAO.getInstancia().persistir(g);		
+	}
+
+	public void puntuarNotaB(int nroGrupo, int lu, String notaB) {
+		// recupera objeto grupo desde la base
+		Grupo g = ControladorEntregables.getInstancia().buscarGrupoPorNumero(nroGrupo);
+		
+		// setea la nota A al alumno 
+		g.setNotaB(lu, notaB);
+		
+		// guarda en la base el objeto cambiado
+		HibernateDAO.getInstancia().persistir(g);				
+	}
+
+	public void puntuarNotaFinal(int nroGrupo, int notaFinal) {
+		// recupera objeto grupo desde la base
+		Grupo g = ControladorEntregables.getInstancia().buscarGrupoPorNumero(nroGrupo);
+		
+		// setea la nota A al alumno 
+		g.setNotaDocFinal(notaFinal);
+		
+		// guarda en la base el objeto cambiado
+		HibernateDAO.getInstancia().persistir(g);						
+	}
 	
 }

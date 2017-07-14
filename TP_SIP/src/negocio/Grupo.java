@@ -141,5 +141,30 @@ public class Grupo implements Serializable{
 		GrupoDTO gd = new GrupoDTO(nroGrupo, estadoTP, tituloTP, intDTO, docFinal.getNota(), docFinal.getFechaEntrega(), docFinal.getEstado(), arcDocFinDTO, obsDocFinDTO);
 		return gd;
 	}
+
+	public void setNotaA(int lu, String notaA) {
+		// busca el objeto Alumno
+		for(Alumno a: integrantes){
+			if(a.getLu() == lu){
+				a.setNotaA(notaA);
+			}
+		}
+		
+	}
+
+	public void setNotaB(int lu, String notaB) {
+		// busca el objeto Alumno
+		for(Alumno a: integrantes){
+			if(a.getLu() == lu){
+				a.setNotaB(notaB);
+			}
+		}
+		
+	}
+
+	public void setNotaDocFinal(int notaFinal) {
+		docFinal.setNota(notaFinal);
+		
+	}
 	
 }
