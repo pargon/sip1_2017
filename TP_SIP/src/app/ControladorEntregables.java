@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dao.HibernateDAO;
@@ -12,7 +13,7 @@ public class ControladorEntregables {
 
 	private static ControladorEntregables instancia;
 	
-	private ControladorEntregables() {}
+	public ControladorEntregables() {}
 	
 	public static ControladorEntregables getInstancia() {
 		if(instancia == null)
@@ -30,12 +31,21 @@ public class ControladorEntregables {
 		return grupo;
 	}
 	
-	public List<EntregableGrupoDTO> lineasTablaDeGrupo(Grupo grupo) {
-		List<Entregable> entregables = grupo.getEntregables();
-		List<EntregableGrupoDTO> listaEntregablesDTO = new ArrayList<>();
+	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, Date dateEntrega, String iter, String etapa) {
+		// obtiene objeto grupo de la base
+		Grupo grupo = buscarGrupoPorNumero(ngrupo);
 		
+		// entregables ya presentados del grupo
+		List<Entregable> entregables = grupo.getEntregables();
+		
+		//
+		// llena DTO
+		//
+		List<EntregableGrupoDTO> listaEntregablesDTO = new ArrayList<EntregableGrupoDTO>();
 		for(Entregable e : entregables) {
+			
 			EntregableGrupoDTO egdto = new EntregableGrupoDTO();
+			
 			if(!e.getObservaciones().isEmpty()) {
 				egdto.setComentario(e.getObservaciones().get(e.getObservaciones().size() - 1).toString());
 			}
@@ -60,7 +70,17 @@ public class ControladorEntregables {
 			egdto.setNombreIteracion(e.getEntregableestructura().getEtapa().getIteracion().getNombre());
 			egdto.setNroGrupo(grupo.getNroGrupo());
 			egdto.setRutaArchivo(e.getArchivo().getRuta());
-			listaEntregablesDTO.add(egdto);
+			
+			boolean muestra = false;
+			
+			// valida filtros
+			if (dateEntrega.before(egdto.getFechaEntrega() ))
+				if(iter.equals(egdto.getNombreIteracion()) || iter.equals(""))
+					if( etapa.equals(egdto.getNombreEtapa()) || etapa.equals(""))
+						muestra = true;	
+			
+			if (muestra)
+				listaEntregablesDTO.add(egdto);
 		}
 		return listaEntregablesDTO;
 		
