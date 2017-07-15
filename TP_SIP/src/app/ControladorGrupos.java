@@ -9,6 +9,17 @@ import dto.GrupoDTO;
 
 public class ControladorGrupos {
 	
+	private static ControladorGrupos instancia;
+	
+	public ControladorGrupos(){}
+	
+	public static ControladorGrupos getInstancia(){
+		if(instancia== null)
+			instancia = new ControladorGrupos();
+		return instancia;
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	public List<GrupoDTO> getGrupos() {
 		

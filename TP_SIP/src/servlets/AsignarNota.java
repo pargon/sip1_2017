@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import app.ControladorGrupos;
 
-@WebServlet("/AdmGrupo")
-public class AdmGrupo extends HttpServlet{
+@WebServlet("/AsignarNota")
+public class AsignarNota extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,22 +21,25 @@ public class AdmGrupo extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		String destino = "/inicio.jsp";
-		
-		ControladorGrupos ct = new ControladorGrupos();
-		int nroGrupo = Integer.valueOf( req.getParameter("nrogrupo"));
+		int nroGrupo = Integer.valueOf( req.getParameter("nroGrupo"));
 		int lu = Integer.valueOf( req.getParameter("lu"));
-		String notaA = (String) req.getParameter("valnotaA");
-		String notaB = (String) req.getParameter("valnotaB");
-		String notaFin = (String) req.getParameter("valnotafinal");
-		int notaFinal = Integer.valueOf(notaFin);
-				
-		ct.puntuarNotaA(nroGrupo, lu, notaA);
-		ct.puntuarNotaB(nroGrupo, lu, notaB);
-		ct.puntuarNotaFinal(nroGrupo, notaFinal);
+		String tipoNota =req.getParameter("tipoNota");
+		String valueNota=req.getParameter("valueNota");
 		
-		RequestDispatcher rd = req.getRequestDispatcher(destino);
-		rd.forward(req, resp);		
+		switch(tipoNota)
+		{
+		case "notaA":
+				 ControladorGrupos.getInstancia().puntuarNotaA(nroGrupo, lu, valueNota);
+				 break;
+		case "notaB":
+			 ControladorGrupos.getInstancia().puntuarNotaB(nroGrupo, lu,valueNota );
+			 break;
+//		case "notaFinal":
+//			 ControladorGrupos.getInstancia().puntuarNotaFinal(nroGrupo, Integer.parseInt(req.getParameter("valueNota")));
+//			 break;
+		}
+		
+		
 	}
 
 	@Override
