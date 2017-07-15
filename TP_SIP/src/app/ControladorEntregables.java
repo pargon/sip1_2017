@@ -10,6 +10,7 @@ import dao.HibernateDAO;
 import dto.EntregableGrupoDTO;
 import negocio.Entregable;
 import negocio.Grupo;
+import negocio.ObservacionEntregable;
 
 public class ControladorEntregables {
 
@@ -33,6 +34,20 @@ public class ControladorEntregables {
 		return grupo;
 	}
 	
+	public Entregable buscarEntregablePorNumero(int idEntregable) {
+		Entregable ent = null;
+		try {
+			
+	        String sql = "from Entregable where id = :idEnt";
+	        String prm = "idEnt";
+	        Integer obj = Integer.valueOf(idEntregable);
+	        ent = (Entregable) HibernateDAO.getInstancia().getUnique(sql, prm, obj);			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return ent;
+	}
+
 	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, Date dateEntrega, String iter, String etapa) {
 		// obtiene objeto grupo de la base
 		Grupo grupo = buscarGrupoPorNumero(ngrupo);
@@ -105,6 +120,42 @@ public class ControladorEntregables {
 		}
 		return listaEntregablesDTO;
 		
+	}
+	public void agregarObsEntregable(int idEntregable, String observacion) {
+		
+		// obtiene objeto entregable desde su id
+		Entregable e = buscarEntregablePorNumero(idEntregable);
+				
+		// agrega observacion del entregable
+		ObservacionEntregable oe = new ObservacionEntregable();
+		oe.setFecha(new Date());
+		oe.setComentario(observacion);
+		e.getObservaciones().add(oe);
+	}
+
+	public void modificaObsEntregable(int idEntregable, String observacion) {
+		
+		// obtiene objeto entregable desde su id
+		Entregable e = buscarEntregablePorNumero(idEntregable);
+				
+		// obtiene última observacion del entregable
+		if(!e.getObservaciones().isEmpty())
+		{
+			e.getObservaciones().get(e.getObservaciones().size() - 1).setComentario(observacion);
+			e.getObservaciones().get(e.getObservaciones().size() - 1).setFecha(new Date());
+		}
+		else{
+			// agrega observacion del entregable
+			ObservacionEntregable oe = new ObservacionEntregable();
+			oe.setFecha(new Date());
+			oe.setComentario(observacion);
+			e.getObservaciones().add(oe);
+		}
+		
+		ObservacionEntregable oe = new ObservacionEntregable();
+		oe.setFecha(new Date());
+		oe.setComentario(observacion);
+		e.getObservaciones().add(oe);
 	}
 }
 
