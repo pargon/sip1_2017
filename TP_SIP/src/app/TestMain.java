@@ -14,7 +14,7 @@ public class TestMain {
 		// TODO Auto-generated method stub
 
 		
-		//Controlador ctr = new Controlador();
+		Controlador ctr = new Controlador();
 		
 		
 		HibernateDAO.getInstancia().persistir(new Grupo(2,"Pachano"));
@@ -34,15 +34,7 @@ public class TestMain {
 		grupo.getEntregables().add(new Entregable());
 		grupo.getEntregables().add(new Entregable());
 		HibernateDAO.getInstancia().persistir(grupo);
-		System.out.println(grupo.getEstadoTP());
-		
- 
-		System.out.println("ahora lineas..");
-		List<EntregableGrupoDTO> leg = ControladorEntregables.getInstancia().lineasTablaDeGrupo(grupo);
-		
-		for(EntregableGrupoDTO e:leg){
-			System.out.println("va entregable: " + e.getIdEntregable() );
-		}
+		System.out.println(grupo.getEstadoTP()); 
 		
 		}
 		

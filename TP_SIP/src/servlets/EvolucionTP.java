@@ -44,8 +44,7 @@ public class EvolucionTP extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		ControladorEntregables ct = new ControladorEntregables();
-		List<EntregableGrupoDTO> le = ct.lineasTablaDeGrupo(nroGrupo, dateEntrega, iter, etapa);
+		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, dateEntrega, iter, etapa);
 		req.setAttribute("listevo", le);
 
 		RequestDispatcher rd = req.getRequestDispatcher(destino);
