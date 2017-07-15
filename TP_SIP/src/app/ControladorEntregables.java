@@ -8,6 +8,8 @@ import java.util.List;
 
 import dao.HibernateDAO;
 import dto.EntregableGrupoDTO;
+import dto.ObsEntregableDTO;
+import enums.EstadoEntregable;
 import negocio.Entregable;
 import negocio.Grupo;
 import negocio.ObservacionEntregable;
@@ -131,6 +133,9 @@ public class ControladorEntregables {
 		oe.setFecha(new Date());
 		oe.setComentario(observacion);
 		e.getObservaciones().add(oe);
+		
+		// guarda
+		HibernateDAO.getInstancia().persistir(e);
 	}
 
 	public void modificaObsEntregable(int idEntregable, String observacion) {
@@ -151,11 +156,34 @@ public class ControladorEntregables {
 			oe.setComentario(observacion);
 			e.getObservaciones().add(oe);
 		}
+		// guarda
+		HibernateDAO.getInstancia().persistir(e);
+	}
+
+	public List<ObsEntregableDTO> listarObsDeEntregable(int idEntregable) {
 		
-		ObservacionEntregable oe = new ObservacionEntregable();
-		oe.setFecha(new Date());
-		oe.setComentario(observacion);
-		e.getObservaciones().add(oe);
+		List<ObsEntregableDTO> loe = new ArrayList<ObsEntregableDTO>();
+		
+		// entregable de la base
+		Entregable e = buscarEntregablePorNumero(idEntregable);
+		
+		// crea DTO
+		for(ObservacionEntregable oe: e.getObservaciones()){
+			ObsEntregableDTO oed = new ObsEntregableDTO(oe.getComentario(), oe.getFecha());
+			loe.add(oed);
+		}
+		return loe;
+	}
+
+	public void cambiaEstadoEntregable(int idEntregable, String estado) {
+		// obtiene objeto entregable desde su id
+		Entregable e = buscarEntregablePorNumero(idEntregable);
+				
+		// actualiza estado
+		e.setEstado(EstadoEntregable.valueOf(estado)) ;
+		
+		// guarda
+		HibernateDAO.getInstancia().persistir(e);
 	}
 }
 
