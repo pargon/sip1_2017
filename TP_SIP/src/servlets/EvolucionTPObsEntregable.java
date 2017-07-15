@@ -10,36 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.GrupoDTO;
-import app.ControladorGrupos;
+import dto.ObsEntregableDTO;
+import app.ControladorEntregables;
 
-@WebServlet("/VerListas")
-public class VerListas extends HttpServlet{
+@WebServlet("/EvolucionTPObsEntregable")
+public class EvolucionTPObsEntregable extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String valor = req.getParameter("action");
-		String destino = "inicio.jsp";
-		ControladorGrupos ct = new ControladorGrupos();
+		String destino = "/VerEstructura.jsp";
 		
 		
-		switch(valor ){
-		case "VerGrupos":{
-
-			List<GrupoDTO> lgt = ct.getGrupos();
-			req.setAttribute("listgrupo", lgt);
-			destino = "VerGrupos.jsp";
-			break;}
-		
-		case "VerEstruc":{
-			destino = "VerEstructura.jsp";
-			break;}		
-		}
+		int idEntregable = Integer.valueOf( req.getParameter("idEntregable"));
+				
+		List<ObsEntregableDTO> loe = ControladorEntregables.getInstancia().listarObsDeEntregable(idEntregable);
 		
 		RequestDispatcher rd = req.getRequestDispatcher(destino);
 		rd.forward(req, resp);		

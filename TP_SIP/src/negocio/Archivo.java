@@ -16,6 +16,12 @@ public class Archivo implements Serializable{
 	
 	private String nombre;
 	private String ruta;
+	
+	
+	public Archivo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getNombre() {
 		return nombre;
 	}

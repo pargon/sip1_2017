@@ -1,8 +1,10 @@
 package negocio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +24,21 @@ public class Etapa implements Serializable{
 	private int nroOrden;
 	private String nombre;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="iditeracion")
 	private Iteracion iteracion;
 	
-	@OneToMany
+	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(name="idetapa")
 	private List<EntregableEstructura> entregablesEstruc;
+
+	
+	public Etapa() {
+		super();
+		iteracion = new Iteracion();
+		entregablesEstruc = new ArrayList<EntregableEstructura>();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getNroOrden() {
 		return nroOrden;

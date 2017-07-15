@@ -3,6 +3,7 @@ package negocio;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Iteracion implements Serializable{
 	private int nroOrden;
 	private String nombre;
 	
-	@OneToMany
+	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(name="iditeracion")
 	private List<Etapa> etapas;
 

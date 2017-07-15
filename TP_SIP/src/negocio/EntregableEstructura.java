@@ -1,8 +1,9 @@
 package negocio;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,10 +23,18 @@ public class EntregableEstructura implements Serializable{
 	private int nroOrden;
 	private String nombre;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="idetapa")
 	private Etapa etapa;
 	
+	
+	public EntregableEstructura() {
+		super();
+		nroOrden =1;
+		nombre="Defecto";
+		etapa = new Etapa();
+	}
+
 	public int getNroOrden() {
 		return nroOrden;
 	}
