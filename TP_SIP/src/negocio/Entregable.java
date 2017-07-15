@@ -23,7 +23,7 @@ public class Entregable implements Serializable{
 	private EstadoEntregable estado;
 	
 	@ManyToOne (cascade = CascadeType.ALL)
-	@JoinColumn(name="identregable")
+	@JoinColumn(name="idarchivo")
 	private Archivo archivo;
 	
 	@OneToMany (cascade = CascadeType.ALL)
