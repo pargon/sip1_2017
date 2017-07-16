@@ -29,7 +29,7 @@
 	<div class="container">
 		<h2>Administración de Grupos</h2>
 		<div class="alert alert-success" id="success-alert">
-			<strong>Success! </strong>
+			<strong>Exito: </strong>
 			<div class="mensaje"></div>
 		</div>
 		<table class="table table-bordered table-condensed">
@@ -85,8 +85,15 @@
 						<td><%=gd.getFechaEntregaDocFinal()%></td>
 						<td><%=gd.getNotaDocFinal()%></td>	
 						<td><input type="submit"
-						class="btn btn-info btnPuntuarPrototipo"
-						value="Puntuar Prototipado" /></td>				
+						class="btn btn-info btnPuntuarPrototipoA"
+						value="Puntuar NOTA A" />
+						<input type="submit"
+						class="btn btn-info btnPuntuarPrototipoB"
+						value="Puntuar Nota B" />
+						<input type="submit"
+						class="btn btn-info btnPuntuarPrototipoFinal"
+						value="Puntuar Nota Final" /></td>
+										
 					</tr>
 					
 					<%
@@ -123,7 +130,8 @@
               <table class='table table-condensed'>
 					<tr>
 					<td class="valueTitle"></td>
-					<td><input type='text' class='valueNota' name='valueNota' /></td>
+					<td><input type='text' class='valueNota' name='valueNota' />
+					<input type='text' class='valueNotaFinal' name='valueNotaFinal' /></td>
 					</tr>
 					</table>		
 		</form>
@@ -148,24 +156,44 @@
 	$(document).ready(function() {
 		$("#success-alert").hide();
 		$(".btnPuntuarNota").click(function showAlert() {
-			$(".mensaje").text("Nota A Actualizada Correctamente");
+			$(".mensaje").text("Nota Actualizada Correctamente");
 			$("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
 				$("#success-alert").slideUp(500);
 			});
 		});
 	});
 
-	$(".btnPuntuarPrototipo").click(function() {
+	$(".btnPuntuarPrototipoA").click(function() {
 		$(".nroGrupo").val($(this).closest('tr').attr('id'));
 		$(".lu").val($(this).closest('tr').data('lu'));
 		$(".tipoNota").val("notaA");
 		$(".modal-title").text("Ingresar Nota");
 		$(".valueTitle").text("Nota A");
+		$(".valueNotaFinal").hide();
+		$(".valueNota").show();
+		$('#modalAdmGrupo').modal();
+	});
+	$(".btnPuntuarPrototipoB").click(function() {
+		$(".nroGrupo").val($(this).closest('tr').attr('id'));
+		$(".lu").val($(this).closest('tr').data('lu'));
+		$(".tipoNota").val("notaB");
+		$(".modal-title").text("Ingresar Nota");
+		$(".valueTitle").text("Nota B");
+		$(".valueNota").show();
+		$(".valueNotaFinal").hide();
+		$('#modalAdmGrupo').modal();
+	});
+	$(".btnPuntuarPrototipoFinal").click(function() {
+		$(".nroGrupo").val($(this).closest('tr').attr('id'));
+		$(".modal-title").text("Ingresar Nota");
+		$(".valueTitle").text("Nota Final");
+		$(".valueNota").hide();
+		$(".valueNotaFinal").show();
 		$('#modalAdmGrupo').modal();
 	});
 	$(".btnPuntuarNota").click(function(e) {
 		e.preventDefault();
-		var valNotaA = $('.valueNota').val();
+		var valNota =$('.valueNota').is(":visible")? $('.valueNota').val():$(".valueNotaFinal");
 		var nroGrupo = $('.nroGrupo').val();
 		var lu = $('.lu').val();
 		var tipoNota = $('.tipoNota').val();
@@ -174,7 +202,7 @@
 			url : "/TP_SIP/AsignarNota",
 			data : {
 				nroGrupo : nroGrupo,
-				valueNota : valNotaA,
+				valueNota : valNota,
 				lu : lu,
 				tipoNota :tipoNota
 			},
