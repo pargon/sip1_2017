@@ -1,9 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,9 +32,6 @@ public class AsignarNota extends HttpServlet{
 		case "notaB":
 			 ControladorGrupos.getInstancia().puntuarNotaB(nroGrupo, lu,valueNota );
 			 break;
-//		case "notaFinal":
-//			 ControladorGrupos.getInstancia().puntuarNotaFinal(nroGrupo, Integer.parseInt(req.getParameter("valueNota")));
-//			 break;
 		}
 		
 		

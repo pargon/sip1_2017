@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.ObsEntregableDTO;
 import app.ControladorEntregables;
+import dto.ObsEntregableDTO;
 
 @WebServlet("/EvolucionTPObsEntregable")
 public class EvolucionTPObsEntregable extends HttpServlet{

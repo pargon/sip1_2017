@@ -1,8 +1,6 @@
 package app;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -65,7 +63,7 @@ public class ControladorEntregables {
 			
 			EntregableGrupoDTO egdto = new EntregableGrupoDTO();
 			
-			// última observacion del entregable
+			// ï¿½ltima observacion del entregable
 			if(!e.getObservaciones().isEmpty())
 				egdto.setComentario(e.getObservaciones().get(e.getObservaciones().size() - 1).toString());
 			else
@@ -80,7 +78,7 @@ public class ControladorEntregables {
 			// fecha propuesta de entrega en estructura tp
 			egdto.setFechaEntrega(e.getEntregableestructura().getFechaEntrega());
 			
-			// fecha de la última observación, si la hubo
+			// fecha de la ï¿½ltima observaciï¿½n, si la hubo
 			if(!e.getObservaciones().isEmpty())
 				egdto.setFechaObs(e.getObservaciones().get(e.getObservaciones().size() - 1).getFecha());
 			else
@@ -143,7 +141,7 @@ public class ControladorEntregables {
 		// obtiene objeto entregable desde su id
 		Entregable e = buscarEntregablePorNumero(idEntregable);
 				
-		// obtiene última observacion del entregable
+		// obtiene ï¿½ltima observacion del entregable
 		if(!e.getObservaciones().isEmpty())
 		{
 			e.getObservaciones().get(e.getObservaciones().size() - 1).setComentario(observacion);

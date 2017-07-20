@@ -25,13 +25,13 @@ public class VerListas extends HttpServlet{
 		
 		String valor = req.getParameter("action");
 		String destino = "inicio.jsp";
-		ControladorGrupos ct = new ControladorGrupos();
+		
 		
 		
 		switch(valor ){
 		case "VerGrupos":{
 
-			List<GrupoDTO> lgt = ct.getGrupos();
+			List<GrupoDTO> lgt = ControladorGrupos.getInstancia().getGrupos();
 			req.setAttribute("listgrupo", lgt);
 			destino = "VerGrupos.jsp";
 			break;}
