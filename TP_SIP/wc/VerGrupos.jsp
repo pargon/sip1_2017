@@ -18,7 +18,7 @@
 <body>
 	<div class="alert alert-success text-center" id="success-alert"
 		style="position: fixed; bottom: 0px; right: 0px; width: 50%; z-index: 9999; border-radius: 2px solid">
-		<strong>Exito! </strong>
+		<strong>Éxito! </strong>
 		<div class="mensaje"></div>
 	</div>
 	<div class="container">
@@ -31,7 +31,7 @@
 							<strong>Grupo N° ${grupo.nroGrupo}</strong>
 						</div>
 						<div class="col-sm-3">
-							<strong>Estado TP Final: ${grupo.estadoDocFinal}</strong>
+							<strong>Calificación TP Final: ${grupo.estadoDocFinal}</strong>
 						</div>
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-info">Agregar
@@ -45,14 +45,14 @@
 							<thead>
 								<th><strong>Alumno</strong></th>
 								<th><strong>Legajo</strong></th>
-								<th><strong>Nota de Prototipo</strong></th>
-								<th><strong>Nota de Exposicion</strong></th>
+								<th><strong>Calificación Prototipado</strong></th>
+								<th><strong>Calificación Exposición</strong></th>
 								<th><strong></strong></th>
 							</thead>
 							<tbody>
 								<c:forEach var="alumno" items="${grupo.integrantes}">
 									<tr id="${grupo.nroGrupo}" data-lu="${alumno.lu}">
-										<td style="font-weight: bold;">${alumno.apellido},${alumno.nombre}</td>
+										<td>${alumno.apellido}, ${alumno.nombre}</td>
 										<td>${alumno.lu}</td>
 										<td>${alumno.notaA}</td>
 										<td>${alumno.notaB}</td>
@@ -63,10 +63,10 @@
 													Acciones <span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu">
-													<li><a class="btnPuntuarExposicion">Puntuar
-															Exposicion</a></li>
-													<li><a class="btnPuntuarPrototipo">Puntuar
-															Prototipo</a></li>
+													<li><a class="btnPuntuarPrototipo">Calificar
+															Prototipado</a></li>
+													<li><a class="btnPuntuarExposicion">Calificar
+															Exposición</a></li>
 													<li><a href="#">Eliminar Alumno</a></li>
 												</ul>
 											</div>
@@ -97,15 +97,16 @@
 						<input type='text' name='nroGrupo' class="nroGrupo hidden">
 						<input type='text' name='lu' class="lu hidden"> <input
 							type='text' name='tipoNota' class="tipoNota hidden">
-						<table class='table table-condensed text-center'>
-							<tr>
+<!-- 						<table class='table table-condensed text-center'> -->
+<!-- 							<tr> -->
+								<div class="form-group">
 									<label class="valueTitle" name="valueTitle">Select list:</label> 
-									<select
-										class="form-control valueNota" name="valueNota" id="valueNota">
+									<select	class="form-control valueNota" name="valueNota" id="valueNota" title="Seleccione nota">
+<!-- 										<option selected disabled class="text-hide">Seleccione nota</option> -->
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
-										<option value="4">4</option>
+										<option value="4" selected="selected">4</option>
 										<option value="5">5</option>
 										<option value="6">6</option>
 										<option value="7">7</option>
@@ -113,15 +114,16 @@
 										<option value="9">9</option>
 										<option value="10">10</option>
 									</select>
-							</tr>
-						</table>
+								</div>
+<!-- 							</tr> -->
+<!-- 						</table> -->
 					</form>
 				</div>
 				<div class="modal-footer text-center">
 				<div class="pull-center">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<button type='submit' class='btn btn-default btnPuntuarNota'
-						data-dismiss="modal">Puntuar</button>
+						data-dismiss="modal">Calificar</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						</div>
 				</div>
 			</div>
