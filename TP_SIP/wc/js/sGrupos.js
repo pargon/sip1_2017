@@ -28,6 +28,12 @@ $(".btnPuntuarPrototipo").click(function() {
 	$('#modalAdmGrupo').modal();
 });
 
+$(".btnNotaFinalClick").click(function() {
+	$(".nroGrupoFinal").val($(this).closest(".panel").attr('id'));
+	$('#modalNotaFinal').modal();
+});
+
+
 
 $(".btnPuntuarExposicion").click(function() {
 	$(".nroGrupo").val($(this).closest('tr').attr('id'));
@@ -38,6 +44,25 @@ $(".btnPuntuarExposicion").click(function() {
 	$('#modalAdmGrupo').modal();
 });
 
+
+$(".btnPuntuarNotaFinal").click(function(e) {
+	e.preventDefault();
+	var nroGrupo = $('.nroGrupoFinal').val();
+	var valNota = $('.valueNotaFinal').val();
+	$.ajax({
+		type : 'GET',
+		url : nombreProy + "AsignarNotaFinal",
+		data : {
+			nroGrupo : nroGrupo,
+			valueNota : valNota
+		},
+		success : function(data) {
+			setTimeout(function(){
+	               window.location.reload();
+	        }, 10);
+		}
+	});
+});
 
 $(".btnPuntuarNota").click(function(e) {
 	e.preventDefault();

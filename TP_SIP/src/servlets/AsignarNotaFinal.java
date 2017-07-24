@@ -21,7 +21,7 @@ public class AsignarNotaFinal extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		int nroGrupo = Integer.valueOf( req.getParameter("nroGrupo"));
+		int nroGrupo = Integer.parseInt( req.getParameter("nroGrupo"));
 		int valueNota=Integer.parseInt(req.getParameter("valueNota"));
 		ControladorGrupos.getInstancia().puntuarNotaFinal(nroGrupo, valueNota);
 		
