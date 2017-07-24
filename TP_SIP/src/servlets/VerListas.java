@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.EntregableGrupoDTO;
 import dto.GrupoDTO;
+import app.ControladorEntregables;
 import app.ControladorGrupos;
 
 @WebServlet("/VerListas")
@@ -37,7 +39,11 @@ public class VerListas extends HttpServlet{
 			break;}
 		
 		case "VerEstruc":{
+			
+			List<GrupoDTO> grupos = ControladorGrupos.getInstancia().getGrupos();
+			req.setAttribute("grupos", grupos);
 			destino = "VerEstructura.jsp";
+			
 			break;}		
 		}
 		

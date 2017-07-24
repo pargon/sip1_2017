@@ -108,14 +108,14 @@ public class ControladorEntregables {
 			//
 			// aplica filtros de pantalla, si no filtra no se agrega a la Lista
 			//
-			boolean muestra = false;
+			/*boolean muestra = false;
 			if (dateEntrega.before(egdto.getFechaEntrega() ))
 				if(iter.equals(egdto.getNombreIteracion()) || iter.equals(""))
 					if( etapa.equals(egdto.getNombreEtapa()) || etapa.equals(""))
 						muestra = true;	
 			
 			// valida filtros, sino no entra			
-			if (muestra)
+			if (muestra)*/
 				listaEntregablesDTO.add(egdto);
 		}
 		return listaEntregablesDTO;
