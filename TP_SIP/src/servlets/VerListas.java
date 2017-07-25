@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.EntregableGrupoDTO;
-import dto.GrupoDTO;
-import app.ControladorEntregables;
 import app.ControladorGrupos;
+import dto.GrupoDTO;
 
 @WebServlet("/VerListas")
 public class VerListas extends HttpServlet{
