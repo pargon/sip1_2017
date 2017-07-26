@@ -1,13 +1,18 @@
 function getAppPath() {
-    var pathArray = location.pathname.split('/');
-    var appPath = "/";
-    for(var i=1; i<pathArray.length-1; i++) {
-        appPath += pathArray[i] + "/";
-    }
-    return appPath;
+	var pathArray = location.pathname.split('/');
+	var appPath = "/";
+	for (var i = 1; i < pathArray.length - 1; i++) {
+		appPath += pathArray[i] + "/";
+	}
+	return appPath;
 }
 
 var nombreProy = getAppPath();
+
+$(document.body).on('click', '.addObs', function() {
+	$(".idEntregable").val($(this).closest('tr').attr('id'));
+	$("#modalObsEntregables").modal();
+});
 
 $(".btnVerLista").click(function(e) {
 	e.preventDefault();
@@ -21,7 +26,26 @@ $(".btnVerLista").click(function(e) {
 		},
 		success : function(data) {
 			$("#tablaLista").html(data);
-			reloadJs("bootstrap.min.js");
+		}
+	});
+});
+
+
+$(".btnAgregarObsAEntregable").click(function(e) {
+	e.preventDefault();
+	var idEntregable = $('.idEntregable').val();
+	var obs = $('#obs').text();
+	$.ajax({
+		type : 'GET',
+		url : nombreProy + "EvolucionTPObs",
+		data : {
+			idEntregable : idEntregable,
+			obs : obs
+		},
+		success : function(data) {
+			setTimeout(function(){
+	               window.location.reload();
+	        }, 10);
 		}
 	});
 });

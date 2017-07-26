@@ -65,7 +65,7 @@ public class ControladorEntregables {
 			
 			// �ltima observacion del entregable
 			if(!e.getObservaciones().isEmpty())
-				egdto.setComentario(e.getObservaciones().get(e.getObservaciones().size() - 1).toString());
+				egdto.setComentario(e.getObservaciones().get(e.getObservaciones().size() - 1).getComentario());
 			else
 				egdto.setComentario("");
 			

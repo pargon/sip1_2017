@@ -14,22 +14,46 @@
 <body>
 	<div class="container">
 
-			<select class="form-control" title="Seleccione grupo:" id="listaGrupos" name="listaGrupos">
-				<c:forEach var="grupo" items="${grupos}">
-					<option value="${grupo.nroGrupo}">Grupo: ${grupo.nroGrupo}</option>
-				</c:forEach>
-			</select>
-			<button class="btn btn-primary btnVerLista">Mostrar</button>
+		<select class="form-control" title="Seleccione grupo:"
+			id="listaGrupos" name="listaGrupos">
+			<c:forEach var="grupo" items="${grupos}">
+				<option value="${grupo.nroGrupo}">Grupo: ${grupo.nroGrupo}</option>
+			</c:forEach>
+		</select>
+		<button class="btn btn-primary btnVerLista">Mostrar</button>
 
 		<div id="tablaLista"></div>
 
 
+	<!--  Modal Para Agregar Obs a Entregables -->
+
+	<div id="modalObsEntregables" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Agregar Observación</h4>
+				</div>
+				<div class="modal-body">
+					<form id='frmAgregarObs' action='EvolucionTPObsEntregable' method='get'>
+						<input type='text' name='idEntregable' class="idEntregable hidden">
+						<input type="text" name="obs" id="obs" class="form-control">
+					</form>
+				</div>
+				<div class="modal-footer text-center">
+					<div class="pull-center">
+						<button type='submit'
+							class='btn btn-default btnAgregarObsAEntregable'
+							data-dismiss="modal">Agregar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-
-
-
-
+	</div>
 
 
 

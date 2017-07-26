@@ -22,7 +22,7 @@ public class EvolucionTPObs extends HttpServlet{
 		String destino = "/VerEstructura.jsp";
 		
 		
-		int idEntregable = Integer.valueOf( req.getParameter("idEntregable"));
+		int idEntregable = Integer.parseInt(req.getParameter("idEntregable"));
 		String Observacion = (String) req.getParameter("obs");
 				
 		ControladorEntregables.getInstancia().agregarObsEntregable(idEntregable, Observacion);

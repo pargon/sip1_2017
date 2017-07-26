@@ -30,11 +30,7 @@ public class EvolucionTP extends HttpServlet{
 		
 		out = resp.getWriter();
 		int nroGrupo = Integer.parseInt( req.getParameter("nroGrupo"));
-		String fEntrega = (String) req.getParameter("fentrega");
-		String iter = (String) req.getParameter("iter");
-		String etapa = (String) req.getParameter("etapa");
-
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		
 		/*Date dateEntrega = null;
 		
 		try {
@@ -70,7 +66,7 @@ public class EvolucionTP extends HttpServlet{
 		for (EntregableGrupoDTO entregableGrupoDTO : le) {
 			out.print(
 					
-						"<tr>"
+						"<tr id=\""+ entregableGrupoDTO.getIdEntregable() +"\">" 
 					+	"<td>" + entregableGrupoDTO.getNombreIteracion()
 					+	"</td>"
 					+	"<td>" + entregableGrupoDTO.getNombreEtapa()
@@ -89,7 +85,9 @@ public class EvolucionTP extends HttpServlet{
 					+	"</td>"
 					+	"<td>" + entregableGrupoDTO.getNombreArchivo()
 					+	"</td>"
-					+	"<td>BOTON"
+					+	"<td>"
+					+	"<button type=\"button\" class=\"btn addObs\">Agregar Observacion\n"
+					+	"</button>"
 					+	"</td>"
 					+	"</tr>"
 					
