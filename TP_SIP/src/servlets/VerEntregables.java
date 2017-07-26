@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import app.ControladorEntregables;
-import app.ControladorGrupos;
+import dto.EntregableGrupoDTO;
 import dto.GrupoDTO;
 import dto.NumGrupoDTO;
+import app.ControladorEntregables;
+import app.ControladorGrupos;
 
-@WebServlet("/VerListas")
-public class VerListas extends HttpServlet{
+@WebServlet("/VerEntregables")
+public class VerEntregables extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,27 +27,12 @@ public class VerListas extends HttpServlet{
 		// TODO Auto-generated method stub
 		
 		String valor = req.getParameter("action");
-		String destino = "inicio.jsp";
+		String destino = "index.jsp";
 		
-		
-		
-		switch(valor ){
-		case "VerGrupos":{
-
-			List<GrupoDTO> lgt = ControladorGrupos.getInstancia().getGrupos();
-			req.setAttribute("listgrupo", lgt);
-			destino = "VerGrupos.jsp";
-			break;}
-		
-		case "VerEstruc":{
+		List<NumGrupoDTO> grupos = ControladorGrupos.getInstancia().getNrosGrupos();
+		req.setAttribute("grupos", grupos);
+		destino = "VerEstructura.jsp";
 			
-			List<NumGrupoDTO> grupos = ControladorGrupos.getInstancia().getNrosGrupos();
-			req.setAttribute("grupos", grupos);
-			destino = "VerEstructura.jsp";
-			
-			break;}		
-		}
-		
 		RequestDispatcher rd = req.getRequestDispatcher(destino);
 		rd.forward(req, resp);		
 	}
@@ -55,6 +41,6 @@ public class VerListas extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		doGet(req, resp);
 	}	
 }
