@@ -87,7 +87,7 @@ public class EvolucionTP extends HttpServlet{
 					+	"</td>"
 					+	"<td>" + entregableGrupoDTO.getFechaObs()
 					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getRutaArchivo()
+					+	"<td>" + entregableGrupoDTO.getNombreArchivo()
 					+	"</td>"
 					+	"<td>"
 					+	"<button type=\"button\" class=\"btn addObs\">Agregar Observacion\n"
