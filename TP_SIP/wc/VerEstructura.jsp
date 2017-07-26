@@ -7,42 +7,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
 <title>Seguimiento de TP</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<style>
-	body {
-        padding-top: 70px; /* 60px to make the container go all the way to the bottom of the topbar */
-	}
-</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <p class="navbar-text"><strong>Módulo de Grupos de WebCampus</strong></p>
-		  <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
-	    </div>
-	    <ul class="nav navbar-nav">
-			<!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Trabajo Práctico <span class="caret"></span></a> -->
-			<!-- <ul class="dropdown-menu"> -->
-					  <li class="active"><a href="VerEntregables">Seguimiento de TP</a></li>
-<!-- 			          <li><a href="VerEntregables">Seguimiento de TP</a></li> -->
-			          <li><a href="#">Estructura de TP</a></li>
-<!-- 			          <li class="active"><a href="VerGrupos">Administración de Grupos</a></li> -->
-			          <li><a href="VerGrupos">Administración de Grupos</a></li>
-	        		</ul>
-<!--       		</li> -->
-<!--       		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Grupos<span class="caret"></span></a> -->
-<!--         		<ul class="dropdown-menu"> -->
-<!-- 			    	<li class="active"><a href="VerGrupos">Administración de Grupos</a></li> -->
-<!-- 					<li><a href="VerGrupos"><large>Administración de Grupos</large></a></li> -->
-<!--         		</ul> -->
-<!--       		</li> -->
-<!-- 	    </ul> -->
-	  </div>
-	</nav>
 	<div class="container">
 
 		<select class="form-control" title="Seleccione grupo:"
@@ -83,7 +52,68 @@
 			</div>
 		</div>
 	</div>
+	
+	<!--  Modal Para Editar Obs a Entregables -->
+	
+	<div id="modalEditObsEntregables" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Editar Ult. Observación</h4>
+				</div>
+				<div class="modal-body">
+					<form id='frmEditarObs' action='EvolucionTPObsEntregable' method='get'>
+						<input type='text' name='idEntregable' class="idEntregable hidden">
+						<input type="text" name="obs" id="obsNew" class="form-control">
+					</form>
+				</div>
+				<div class="modal-footer text-center">
+					<div class="pull-center">
+						<button type='submit'
+							class='btn btn-default btnEditarObsAEntregable'
+							data-dismiss="modal">Editar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<!--  Modal Para Setear Estado a Entregables -->
+	
+	<div id="modalSetStsEntregables" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Estado Entregable</h4>
+				</div>
+				<div class="modal-body">
+					<form id='frmSetSts' action='EvolucionTPObsEntregable' method='get'>
+						<input type='text' name='idEntregable' class="idEntregable hidden">
+						<select class="form-control estado"
+							name="estado" id="estado" title="Seleccione estado">
+							<option value="APROBADO">Aprobado</option>
+							<option value="CON_CORRECIONES">Con Correcciones</option>
+						</select>
+					</form>
+				</div>			
+				<div class="modal-footer text-center">
+					<div class="pull-center">
+						<button type='submit'
+							class='btn btn-default btnSetStsAEntregable'
+							data-dismiss="modal">Cambiar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--  Modal Para ver historial de Observaciones de Entregables -->
+	
+	
 	</div>
 
 

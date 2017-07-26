@@ -14,6 +14,16 @@ $(document.body).on('click', '.addObs', function() {
 	$("#modalObsEntregables").modal();
 });
 
+$(document.body).on('click', '.editObs', function() {
+	$(".idEntregable").val($(this).closest('tr').attr('id'));
+	$("#modalEditObsEntregables").modal();
+});
+
+$(document.body).on('click', '.setSts', function() {
+	$(".idEntregable").val($(this).closest('tr').attr('id'));
+	$("#modalSetStsEntregables").modal();
+});
+
 $(".btnVerLista").click(function(e) {
 	e.preventDefault();
 	var nroGrupo = $('#listaGrupos').val();
@@ -41,6 +51,46 @@ $(".btnAgregarObsAEntregable").click(function(e) {
 		data : {
 			idEntregable : idEntregable,
 			obs : obs
+		},
+		success : function(data) {
+			setTimeout(function(){
+				$('.btnVerLista').trigger('click');
+	        }, 10);
+		}
+	});
+});
+
+
+$(".btnEditarObsAEntregable").click(function(e) {
+	e.preventDefault();
+	var idEntregable = $('.idEntregable').val();
+	var obs = $('#obsNew').val();
+	$.ajax({
+		type : 'GET',
+		url : nombreProy + "EvolucionTPObsModifica",
+		data : {
+			idEntregable : idEntregable,
+			obs : obs
+		},
+		success : function(data) {
+			setTimeout(function(){
+				$('.btnVerLista').trigger('click');
+	        }, 10);
+		}
+	});
+});
+
+
+$(".btnSetStsAEntregable").click(function(e) {
+	e.preventDefault();
+	var idEntregable = $('.idEntregable').val();
+	var estado = $('#estado').val();
+	$.ajax({
+		type : 'GET',
+		url : nombreProy + "EvolucionTPEstadoEntregable",
+		data : {
+			idEntregable : idEntregable,
+			estado : estado
 		},
 		success : function(data) {
 			setTimeout(function(){

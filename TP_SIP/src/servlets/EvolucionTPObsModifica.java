@@ -23,6 +23,10 @@ public class EvolucionTPObsModifica extends HttpServlet{
 				
 		int idEntregable = Integer.valueOf( req.getParameter("idEntregable"));
 		String Observacion = (String) req.getParameter("obs");
+		
+		
+				System.out.println("id ent: " + String.valueOf(idEntregable) );
+				System.out.println("obs ent: " + Observacion);
 				
 		ControladorEntregables.getInstancia().modificaObsEntregable(idEntregable, Observacion);
 		

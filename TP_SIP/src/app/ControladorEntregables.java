@@ -178,7 +178,7 @@ public class ControladorEntregables {
 		Entregable e = buscarEntregablePorNumero(idEntregable);
 				
 		// actualiza estado
-		e.setEstado(EstadoEntregable.valueOf(estado)) ;
+		e.setEstado(EstadoEntregable.valueOf(estado));
 		
 		// guarda
 		HibernateDAO.getInstancia().persistir(e);
