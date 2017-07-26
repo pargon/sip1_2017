@@ -6,6 +6,7 @@ import java.util.List;
 import negocio.Grupo;
 import dao.HibernateDAO;
 import dto.GrupoDTO;
+import dto.NumGrupoDTO;
 
 public class ControladorGrupos {
 	
@@ -68,4 +69,23 @@ public class ControladorGrupos {
 		HibernateDAO.getInstancia().persistir(g);						
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<NumGrupoDTO> getNrosGrupos() {
+		
+		// obtiene tupa de objetos
+		String sql = "select g.id, g.nroGrupo from Grupo g order by g.nroGrupo";
+		List<Object[]> lng = (List<Object[]>) HibernateDAO.getInstancia().getList(sql);
+		
+		// arma lista de dto
+		List<NumGrupoDTO> nrosGrupos = new ArrayList<NumGrupoDTO>();
+		for (Object[] o: lng){
+			int id = (int) o[0];
+			int nroGrupo = (int) o[1];
+			
+			NumGrupoDTO ngt = new NumGrupoDTO(nroGrupo, id) ;
+			
+			nrosGrupos.add(ngt);						
+		}
+		return nrosGrupos;
+	}
 }
