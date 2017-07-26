@@ -87,7 +87,7 @@
 								<c:forEach var="alumno" items="${grupo.integrantes}">
 									<tr class="trNroGrupo" id="${grupo.nroGrupo}"
 										data-lu="${alumno.lu}">
-										<td>${alumno.apellido},${alumno.nombre}</td>
+										<td>${alumno.apellido}, ${alumno.nombre}</td>
 										<td>${alumno.lu}</td>
 										<td>${alumno.notaA}</td>
 										<td>${alumno.notaB}</td>
