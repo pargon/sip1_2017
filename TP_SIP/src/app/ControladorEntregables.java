@@ -48,7 +48,7 @@ public class ControladorEntregables {
 		return ent;
 	}
 
-	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, Date dateEntrega, String iter, String etapa) {
+	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, String dateEntrega, String iter, String etapa) {
 		// obtiene objeto grupo de la base
 		Grupo grupo = buscarGrupoPorNumero(ngrupo);
 		

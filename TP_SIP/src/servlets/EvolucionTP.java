@@ -37,7 +37,7 @@ public class EvolucionTP extends HttpServlet {
 		 * // TODO Auto-generated catch block e.printStackTrace(); }
 		 */
 
-		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, null, "", "");
+		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, "", "", "");
 		
 		out.print(
 
