@@ -34,7 +34,7 @@ $(".btnVerLista").click(function(e) {
 $(".btnAgregarObsAEntregable").click(function(e) {
 	e.preventDefault();
 	var idEntregable = $('.idEntregable').val();
-	var obs = $('#obs').text();
+	var obs = $('#obs').val();
 	$.ajax({
 		type : 'GET',
 		url : nombreProy + "EvolucionTPObs",
@@ -44,7 +44,7 @@ $(".btnAgregarObsAEntregable").click(function(e) {
 		},
 		success : function(data) {
 			setTimeout(function(){
-	               window.location.reload();
+				$('.btnVerLista').trigger('click');
 	        }, 10);
 		}
 	});
