@@ -21,6 +21,15 @@ $(".btnVerLista").click(function(e) {
 		},
 		success : function(data) {
 			$("#tablaLista").html(data);
+			reloadJs("bootstrap.min.js");
 		}
 	});
 });
+
+
+function reloadJs(src) {
+    src = $('script[src$="' + src + '"]').attr("src");
+    $('script[src$="' + src + '"]').remove();
+    $('<script/>').attr('src', src).appendTo('body');
+}
+

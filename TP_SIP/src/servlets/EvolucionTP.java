@@ -46,13 +46,23 @@ public class EvolucionTP extends HttpServlet{
 		
 		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, null, "", "");
 		
+		
 		out.print(
 				
-				"<table>"
-				+ "<thead>"
-				+ "<th>Nro Grupo</th>"
-				+ "</thead>"
-				+ "<tbody>"
+				"<table id=\"my-table\" class=\"table table-striped\">"
+				+"<thead>"
+				+"<th><strong>Iteración</strong></th>"
+				+"<th><strong>Etapa</strong></th>"
+				+"<th><strong>Entregable</strong></th>"
+				+"<th><strong>Fecha carga</strong></th>"
+				+"<th><strong>Fecha a entregar</strong></th>"
+				+"<th><strong>Estado</strong></th>"
+				+"<th><strong>Observaciones</strong></th>"
+				+"<th><strong>Fecha Observación</strong></th>"
+				+"<th><strong>Archivo</strong></th>"
+				+"<th><strong></strong></th>"
+				+"</thead>"
+				+"<tbody>"
 				
 			
 			);
@@ -61,7 +71,25 @@ public class EvolucionTP extends HttpServlet{
 			out.print(
 					
 						"<tr>"
+					+	"<td>" + entregableGrupoDTO.getNombreIteracion()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getNombreEtapa()
+					+	"</td>"
 					+	"<td>" + entregableGrupoDTO.getNombreEntregable()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getFechaCarga()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getFechaEntrega()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getEstado()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getComentario()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getFechaObs()
+					+	"</td>"
+					+	"<td>" + entregableGrupoDTO.getNombreArchivo()
+					+	"</td>"
+					+	"<td>BOTON"
 					+	"</td>"
 					+	"</tr>"
 					

@@ -19,7 +19,7 @@
 					<option value="${grupo.nroGrupo}">Grupo: ${grupo.nroGrupo}</option>
 				</c:forEach>
 			</select>
-			<button class="btnVerLista">Ver</button>
+			<button class="btn btn-primary btnVerLista">Mostrar</button>
 
 		<div id="tablaLista"></div>
 
