@@ -99,3 +99,21 @@ $(".btnSetStsAEntregable").click(function(e) {
 		}
 	});
 });
+
+
+
+$(document.body).on('click', '.verHistorialObs', function() {
+	var idEntregable = $(this).closest('tr').attr('id');
+	
+	$.ajax({
+		type : 'GET',
+		url : nombreProy + "EvolucionTPObsEntregable",
+		data : {
+			idEntregable : idEntregable
+		},
+		success : function(data) {
+			$("#modalListadoObs p").html(data);
+			$("#modalListadoObs").modal();
+		}
+	});
+});

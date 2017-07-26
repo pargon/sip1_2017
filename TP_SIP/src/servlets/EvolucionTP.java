@@ -18,118 +18,87 @@ import app.ControladorEntregables;
 import dto.EntregableGrupoDTO;
 
 @WebServlet("/EvolucionTP")
-public class EvolucionTP extends HttpServlet{
+public class EvolucionTP extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		PrintWriter out;
-		
+
 		out = resp.getWriter();
-		int nroGrupo = Integer.parseInt( req.getParameter("nroGrupo"));
-		
-		/*Date dateEntrega = null;
-		
-		try {
-			dateEntrega = formatter.parse(fEntrega);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
+		int nroGrupo = Integer.parseInt(req.getParameter("nroGrupo"));
+
+		/*
+		 * Date dateEntrega = null;
+		 * 
+		 * try { dateEntrega = formatter.parse(fEntrega); } catch (ParseException e) {
+		 * // TODO Auto-generated catch block e.printStackTrace(); }
+		 */
+
 		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, null, "", "");
 		
-		
 		out.print(
-				
-				"<table id=\"my-table\" class=\"table table-striped\">"
-				+"<thead>"
-				+"<th><strong>Iteración</strong></th>"
-				+"<th><strong>Etapa</strong></th>"
-				+"<th><strong>Entregable</strong></th>"
-				+"<th><strong>Fecha carga</strong></th>"
-				+"<th><strong>Fecha a entregar</strong></th>"
-				+"<th><strong>Estado</strong></th>"
-				+"<th><strong>Observaciones</strong></th>"
-				+"<th><strong>Fecha Observación</strong></th>"
-				+"<th><strong>Archivo</strong></th>"
-				+"<th><strong></strong></th>"
-				+"<th><strong></strong></th>"
-				+"<th><strong></strong></th>"
-				+"<th><strong></strong></th>"
-				+"<th><strong></strong></th>"
-				+"</thead>"
-				+"<tbody>"
-				
-			
-			);
-		
+
+				"<table id=\"my-table\" class=\"table table-striped table-responsive\">" + "<thead>"
+						+ "<th><strong>Iteración</strong></th>" + "<th><strong>Etapa</strong></th>"
+						+ "<th><strong>Entregable</strong></th>" + "<th><strong>Fecha carga</strong></th>"
+						+ "<th><strong>Fecha a entregar</strong></th>" + "<th><strong>Estado</strong></th>"
+						+ "<th><strong>Observaciones</strong></th>" + "<th><strong>Fecha Observación</strong></th>"
+						+ "<th><strong>Archivo</strong></th>" + "<th><strong></strong></th>"
+						+ "</thead>" + "<tbody>"
+
+		);
+
 		for (EntregableGrupoDTO entregableGrupoDTO : le) {
 			out.print(
-					
-						"<tr id=\""+ entregableGrupoDTO.getIdEntregable() +"\">" 
-					+	"<td>" + entregableGrupoDTO.getNombreIteracion()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getNombreEtapa()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getNombreEntregable()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getFechaCarga()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getFechaEntrega()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getEstado()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getComentario()
-					+	"</td>"
-					+	"<td>" + entregableGrupoDTO.getFechaObs()
-					+	"</td>"
-					+	"<td><a href=" + "\"#\"" + ">" + entregableGrupoDTO.getNombreArchivo()
-					+	"</a></td>"
-					+	"<td>"
-					+	"<button type=\"button\" class=\"btn addObs\">Agregar Observacion\n"
-					+	"</button>"
-					+	"</td>"
-					+	"<td>"
-					+	"<button type=\"button\" class=\"btn editObs\">Editar Observacion\n"
-					+	"</button>"
-					+	"</td>"
-					+	"<td>"
-					+	"<button type=\"button\" class=\"btn setSts\">Estado Entregable\n"
-					+	"</button>"
-					+	"</td>"
-					+	"<td>"
-					+	"<button type=\"button\" class=\"btn editFecEnt\">Ver Historial Obs.\n"
-					+	"</button>"
-					+	"</td>"
-					+	"<td>"
-					+	"<button type=\"button\" class=\"btn editFecEnt\">Cambiar F.A Entregar\n"
-					+	"</button>"
-					+	"</td>"
-					+	"</tr>"
-					
-					
-					);
-		}
-		
-		out.print(
-				
-				"</tbody>"
-			+	"</table>"
-			
+
+					"<tr id=\"" + entregableGrupoDTO.getIdEntregable() + "\">" + "<td>"
+							+ entregableGrupoDTO.getNombreIteracion() + "</td>" + "<td>"
+							+ entregableGrupoDTO.getNombreEtapa() + "</td>" + "<td>"
+							+ entregableGrupoDTO.getNombreEntregable() + "</td>" + "<td>"
+							+ entregableGrupoDTO.getFechaCarga() + "</td>" + "<td>"
+							+ entregableGrupoDTO.getFechaEntrega() + "</td>" + "<td>" + entregableGrupoDTO.getEstado()
+							+ "</td>" + "<td>" + entregableGrupoDTO.getComentario() + "</td>" + "<td>"
+							+ entregableGrupoDTO.getFechaObs() + "</td>" + "<td><a href=" + "\"#\"" + ">"
+							+ entregableGrupoDTO.getNombreArchivo() + "</a></td>" + "<td>"
+							+ "<td class=\"text-center\">\n"
+							+ "											<div class=\"dropdown\">\n"
+							+ "												<button class=\"btn btn-info dropdown-toggle\" type=\"button\"\n"
+							+ "													data-toggle=\"dropdown\">\n"
+							+ "													Acciones <span class=\"caret\"></span>\n"
+							+ "												</button>\n"
+							+ "												<ul class=\"dropdown-menu\">\n"
+							+ "													<li><a class=\"addObs\">Agregar\n"
+							+ "															Observacion</a></li>\n"
+							+ "													<li><a class=\"editObs\">Editar\n"
+							+ "															Observacion</a></li>\n"
+							+ "													<li><a class=\"setSts\">Editar Estado del\n"
+							+ "															Entregable</a></li>\n"
+							+ "													<li><a class=\"verHistorialObs\">Ver Historial\n"
+							+ "															De Observaciones</a></li>\n"
+							+ "													<li><a class=\"setFechaEntrega\">Cambiar Fecha de Entrega</a></li>\n"
+							+ "												</ul>\n"
+							+ "											</div>\n"
+							+ "										</td>" + "</tr>"
+
 			);
-		
+		}
+
+		out.print(
+
+				"</tbody>" + "</table>"
+
+		);
+
 		out.close();
-		
+
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
-	}	
+	}
 }

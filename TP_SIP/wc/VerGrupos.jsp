@@ -3,68 +3,75 @@
 <%@page import="dto.AlumnoDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Administración de Grupos</title>
+<title>AdministraciÃ³n de Grupos</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
-	body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-	}
+body {
+	padding-top: 60px;
+	/* 60px to make the container go all the way to the bottom of the topbar */
+}
 </style>
 
 </head>
 <body>
 	<nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <p class="navbar-text"><strong>Módulo de Grupos de WebCampus</strong></p>
-	    </div>
-	    <ul class="nav navbar-nav">
-			<!-- <li class="active"><a href="VerEntregables">Seguimiento de TP</a></li> -->
-			<li><a href="VerEntregables">Seguimiento de TP</a></li>
-			<li><a href="#">Estructura de TP</a></li>
-			<li class="active"><a href="VerGrupos">Administración de Grupos</a></li>
-<!-- 			<li><a href="VerGrupos">Administración de Grupos</a></li> -->
-  		</ul>
-	  </div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<p class="navbar-text">
+					<strong>MÃ³dulo de Grupos de WebCampus</strong>
+				</p>
+			</div>
+			<ul class="nav navbar-nav">
+				<!-- <li class="active"><a href="VerEntregables">Seguimiento de TP</a></li> -->
+				<li><a href="VerEntregables">Seguimiento de TP</a></li>
+				<li><a href="#">Estructura de TP</a></li>
+				<li class="active"><a href="VerGrupos">AdministraciÃ³n de
+						Grupos</a></li>
+				<!-- 			<li><a href="VerGrupos">AdministraciÃ³n de Grupos</a></li> -->
+			</ul>
+		</div>
 	</nav>
 
 	<div class="alert alert-success text-center" id="success-alert"
 		style="position: fixed; bottom: 0px; right: 0px; width: 50%; z-index: 9999; border-radius: 2px solid">
-		<strong>Éxito! </strong>
+		<strong>Ã‰xito! </strong>
 		<div class="mensaje"></div>
 	</div>
 	<div class="container">
-		<h4 class="text-center"><strong>Administración de Grupos</strong></h4>
+		<h4 class="text-center">
+			<strong>AdministraciÃ³n de Grupos</strong>
+		</h4>
 		<div class="panel-group">
 			<c:forEach var="grupo" items="${listgrupo}">
 				<div class="panel panel-primary" id="${grupo.nroGrupo}"
 					style="margin-bottom: 30px;">
 					<div class="panel-heading clearfix">
 						<div class="col-sm-3">
-							<strong>Grupo N° ${grupo.nroGrupo}</strong>
+							<strong>Grupo NÂ° ${grupo.nroGrupo}</strong>
 						</div>
 						<div class="col-sm-3">
 							<c:set var="notaTPFinal" scope="session"
 								value="${grupo.notaDocFinal}" />
 							<c:if test="${empty notaTPFinal or notaTPFinal == 0}">
-								<strong>Calificación TP Final: NO DISPONIBLE</strong>
+								<strong>CalificaciÃ³n TP Final: NO DISPONIBLE</strong>
 							</c:if>
 							<c:if
 								test="${notaTPFinal > 3 and not empty notaTPFinal and notaTPFinal != 0}">
-								<strong>Calificación TP Final: SUFICIENTE</strong>
+								<strong>CalificaciÃ³n TP Final: SUFICIENTE</strong>
 							</c:if>
 							<c:if
 								test="${notaTPFinal < 3 and not empty notaTPFinal and notaTPFinal != 0}">
-								<strong>Calificación TP Final: INSUFICIENTE</strong>
+								<strong>CalificaciÃ³n TP Final: INSUFICIENTE</strong>
 							</c:if>
 						</div>
 						<div class="btn-group pull-right">
@@ -79,15 +86,15 @@
 							<thead>
 								<th><strong>Alumno</strong></th>
 								<th><strong>Legajo</strong></th>
-								<th><strong>Calificación Prototipado</strong></th>
-								<th><strong>Calificación Exposición</strong></th>
+								<th><strong>CalificaciÃ³n Prototipado</strong></th>
+								<th><strong>CalificaciÃ³n ExposiciÃ³n</strong></th>
 								<th><strong></strong></th>
 							</thead>
 							<tbody>
 								<c:forEach var="alumno" items="${grupo.integrantes}">
 									<tr class="trNroGrupo" id="${grupo.nroGrupo}"
 										data-lu="${alumno.lu}">
-										<td>${alumno.apellido}, ${alumno.nombre}</td>
+										<td>${alumno.apellido},${alumno.nombre}</td>
 										<td>${alumno.lu}</td>
 										<td>${alumno.notaA}</td>
 										<td>${alumno.notaB}</td>
@@ -101,7 +108,7 @@
 													<li><a class="btnPuntuarPrototipo">Calificar
 															Prototipado</a></li>
 													<li><a class="btnPuntuarExposicion">Calificar
-															Exposición</a></li>
+															ExposiciÃ³n</a></li>
 													<li><a href="#">Eliminar Alumno</a></li>
 												</ul>
 											</div>
