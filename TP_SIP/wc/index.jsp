@@ -16,17 +16,20 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<form action="VerGrupos" method="get">
-		<div class="row">
-			<div class="col-sm-4">Administración de Grupos</div>
-			<div class="col-sm-4"><input type="submit" class="btn btn-primary" name="action" value="Ir"></div>
-		</div>
-	</form>
-	<br>
-	<form action="VerEntregables" method="get">
-		<div class="row">
-			<div class="col-sm-4">Seguimiento de TP</div>
-			<div class="col-sm-4"><input type="submit" class="btn btn-primary" name="action" value="Ir"></div>
-		</div>
+	<nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <p class="navbar-text"><strong>Módulo de Grupos de WebCampus</strong></p>
+	    </div>
+	    <ul class="nav navbar-nav">
+<!-- 			<li class="active"><a href="VerEntregables">Seguimiento de TP</a></li> -->
+			<li><a href="VerEntregables">Seguimiento de TP</a></li>
+			<li><a href="#"> Estructura de TP</a></li>
+<!-- 			<li class="active"><a href="VerGrupos">Administración de Grupos</a></li> -->
+			<li><a href="VerGrupos">Administración de Grupos</a></li>
+  		</ul>
+	  </div>
+	</nav>
+
 </body>
 </html>

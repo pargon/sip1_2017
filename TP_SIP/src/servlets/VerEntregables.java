@@ -27,11 +27,10 @@ public class VerEntregables extends HttpServlet{
 		// TODO Auto-generated method stub
 		
 		String valor = req.getParameter("action");
-		String destino = "index.jsp";
+		String destino = "VerEstructura.jsp";
 		
 		List<NumGrupoDTO> grupos = ControladorGrupos.getInstancia().getNrosGrupos();
 		req.setAttribute("grupos", grupos);
-		destino = "VerEstructura.jsp";
 			
 		RequestDispatcher rd = req.getRequestDispatcher(destino);
 		rd.forward(req, resp);		

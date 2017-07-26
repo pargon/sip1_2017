@@ -14,15 +14,36 @@
 
 <title>Administración de Grupos</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	}
+</style>
+
 </head>
 <body>
+	<nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <p class="navbar-text"><strong>Módulo de Grupos de WebCampus</strong></p>
+	    </div>
+	    <ul class="nav navbar-nav">
+			<!-- <li class="active"><a href="VerEntregables">Seguimiento de TP</a></li> -->
+			<li><a href="VerEntregables">Seguimiento de TP</a></li>
+			<li><a href="#">Estructura de TP</a></li>
+			<li class="active"><a href="VerGrupos">Administración de Grupos</a></li>
+<!-- 			<li><a href="VerGrupos">Administración de Grupos</a></li> -->
+  		</ul>
+	  </div>
+	</nav>
+
 	<div class="alert alert-success text-center" id="success-alert"
 		style="position: fixed; bottom: 0px; right: 0px; width: 50%; z-index: 9999; border-radius: 2px solid">
 		<strong>Éxito! </strong>
 		<div class="mensaje"></div>
 	</div>
 	<div class="container">
-		<h2 class="text-center">Administración de Grupos</h2>
+		<h4 class="text-center"><strong>Administración de Grupos</strong></h4>
 		<div class="panel-group">
 			<c:forEach var="grupo" items="${listgrupo}">
 				<div class="panel panel-primary" id="${grupo.nroGrupo}"

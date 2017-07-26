@@ -10,18 +10,46 @@
 
 <title>Seguimiento de TP</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	}
+</style>
 </head>
 <body>
+	<nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <p class="navbar-text"><strong>Módulo de Grupos de WebCampus</strong></p>
+	    </div>
+	    <ul class="nav navbar-nav">
+			<li class="active"><a href="VerEntregables">Seguimiento de TP</a></li>
+<!-- 			<li><a href="VerEntregables">Seguimiento de TP</a></li> -->
+			<li><a href="#">Estructura de TP</a></li>
+<!-- 			<li class="active"><a href="VerGrupos">Administración de Grupos</a></li> -->
+			<li><a href="VerGrupos">Administración de Grupos</a></li>
+  		</ul>
+	  </div>
+	</nav>
+
 	<div class="container">
-
-		<select class="form-control" title="Seleccione grupo:"
-			id="listaGrupos" name="listaGrupos">
-			<c:forEach var="grupo" items="${grupos}">
-				<option value="${grupo.nroGrupo}">Grupo: ${grupo.nroGrupo}</option>
-			</c:forEach>
-		</select>
-		<button class="btn btn-primary btnVerLista">Mostrar</button>
-
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+<!-- 				<td class="text-right">Seleccione Grupo: </td> -->
+				<th>
+					<select class="form-control" title="Seleccione grupo:"
+					id="listaGrupos" name="listaGrupos">
+						<c:forEach var="grupo" items="${grupos}">
+							<option value="${grupo.nroGrupo}">Grupo N° ${grupo.nroGrupo}</option>
+						</c:forEach>
+					</select>
+				</th>
+				<th><button class="btn btn-primary btnVerLista">Mostrar</button></th>
+				</tr>
+			</thead>
+		</table>
+		<br>
 		<div id="tablaLista"></div>
 
 
