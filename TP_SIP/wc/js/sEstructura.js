@@ -33,13 +33,42 @@ $(".btnVerLista").click(function(e) {
 		url : nombreProy + "EvolucionTP",
 		data : {
 			nroGrupo : nroGrupo,
+			fechaEntregar : null,
+			iteracion : null,
+			etapa : null
 		},
 		success : function(data) {
-			$("#tablaLista").html(data);
+			lala(data);	
 		}
 	});
 });
 
+
+function lala(data)
+{
+	$("#tablaLista").html(data);
+	$(".btnFiltrarEntregables").click(function(e) {
+		e.preventDefault();
+		var nroGrupo = $('#listaGrupos').val();
+		var fechaEntregar = $('.fechaEntregar').val();
+		var iteracion = $('.iteracion').val();
+		var etapa = $('#etapa').val();
+
+		$.ajax({
+			type : 'GET',
+			url : nombreProy + "EvolucionTP",
+			data : {
+				nroGrupo : nroGrupo,
+				fechaEntregar : fechaEntregar,
+				iteracion : iteracion,
+				etapa : etapa
+			},
+			success : function(data) {
+				lala(data);
+			}
+		});
+	});
+	};
 
 $(".btnAgregarObsAEntregable").click(function(e) {
 	e.preventDefault();
