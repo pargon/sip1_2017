@@ -49,6 +49,24 @@ public class ControladorEntregables {
 		}
 		return ent;
 	}
+	
+	public float pctjeAvanceTP(List<EntregableGrupoDTO> lg) {
+		
+		// total de entregables por presentar
+		float totalEntEst = lg.size();
+		if (totalEntEst == 0)
+			totalEntEst = 1;
+		
+		// cantidad aprobadas
+		float cntAprob = 0;
+		for(EntregableGrupoDTO eg: lg){
+			if(eg.getEstado() == EstadoEntregable.APROBADO)
+				cntAprob ++;
+		}
+		
+		// porcentaje de aprobadas
+		return cntAprob * 100 / totalEntEst ;
+	}
 
 	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, String fechaEntrega, String iter, String etapa) {
 		// obtiene objeto grupo de la base
