@@ -4,7 +4,7 @@ public enum EstadoEntregable {
 
 	NO_CARGADO,
 	APROBADO,
-	CON_CORRECIONES,
+	CON_CORRECCIONES,
 	PENDIENTE_DE_CORRECCION
 	
 }

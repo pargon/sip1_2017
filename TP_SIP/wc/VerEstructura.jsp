@@ -47,7 +47,7 @@ body {
 								<option value="${grupo.nroGrupo}">Grupo N° ${grupo.nroGrupo}</option>
 							</c:forEach>
 					</select></th>
-					<th><button class="btn btn-primary btnVerLista">Mostrar</button></th>
+					<th><button class="btn btn-primary btnVerLista">Buscar</button></th>
 				</tr>
 			</thead>
 		</table>

@@ -15,11 +15,14 @@ public class test {
 		String etapa = null;
 		
 		List<EntregableGrupoDTO> lo = 		ControladorEntregables.getInstancia().lineasTablaDeGrupo(5, fechaEntrega, iter, etapa);
-
+/*
 		for (EntregableGrupoDTO eo :lo){
 			System.out.println("eo:" + eo.getIdEntregable() + " iter: " + eo.getNombreIteracion() + " eta: " + eo.getNombreEtapa() +" estado: " + eo.getEstado() + " fecha ent: " + eo.getFechaEntrega());
 			
 		}
+		*/
+		
+		
 	}
 
 }
