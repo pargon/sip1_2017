@@ -1,5 +1,7 @@
 package app;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,7 +50,7 @@ public class ControladorEntregables {
 		return ent;
 	}
 
-	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, String dateEntrega, String iter, String etapa) {
+	public List<EntregableGrupoDTO> lineasTablaDeGrupo(int ngrupo, String fechaEntrega, String iter, String etapa) {
 		// obtiene objeto grupo de la base
 		Grupo grupo = buscarGrupoPorNumero(ngrupo);
 		
@@ -108,18 +110,36 @@ public class ControladorEntregables {
 			//
 			// aplica filtros de pantalla, si no filtra no se agrega a la Lista
 			//
-			/*boolean muestra = false;
-			if (dateEntrega.before(egdto.getFechaEntrega() ))
-				if(iter.equals(egdto.getNombreIteracion()) || iter.equals(""))
-					if( etapa.equals(egdto.getNombreEtapa()) || etapa.equals(""))
+			// convierte fecha
+			//
+			String format = "dd/MM/yyyy";
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			Date dateEntrega=null;
+			
+			if(!fechaEntrega.equals("")){				
+				try {
+					dateEntrega = sdf.parse(fechaEntrega);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+			// valida filtros
+			boolean muestra = false;
+			// fecha entrega < filtro fecha
+			Date fentrega = egdto.getFechaEntrega();
+			if (dateEntrega==null || fentrega.compareTo(dateEntrega) <0 || fechaEntrega.equals(""))
+				if(iter==null || iter.equals(egdto.getNombreIteracion()) || iter.equals(""))
+					if(etapa==null || etapa.equals(egdto.getNombreEtapa()) || etapa.equals(""))
 						muestra = true;	
 			
-			// valida filtros, sino no entra			
-			if (muestra)*/
+			// sino no entra, no se suma a la lista			
+			if (muestra)
 				listaEntregablesDTO.add(egdto);
 		}
-		return listaEntregablesDTO;
 		
+		return listaEntregablesDTO;
 	}
 	public void agregarObsEntregable(int idEntregable, String observacion) {
 		

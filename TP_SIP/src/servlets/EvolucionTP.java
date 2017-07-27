@@ -30,12 +30,6 @@ public class EvolucionTP extends HttpServlet {
 		out = resp.getWriter();
 		int nroGrupo = Integer.parseInt(req.getParameter("nroGrupo"));
 
-		/*
-		 * Date dateEntrega = null;
-		 * 
-		 * try { dateEntrega = formatter.parse(fEntrega); } catch (ParseException e) {
-		 * // TODO Auto-generated catch block e.printStackTrace(); }
-		 */
 
 		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, "", "", "");
 		
