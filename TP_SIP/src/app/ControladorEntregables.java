@@ -130,7 +130,7 @@ public class ControladorEntregables {
 			//
 			// convierte fecha
 			//
-			String format = "dd/MM/yyyy";
+			String format = "yyyy-MM-dd";
 			SimpleDateFormat sdf = new SimpleDateFormat(format);
 			Date dateEntrega=null;
 			
