@@ -36,12 +36,14 @@ public class EvolucionTP extends HttpServlet {
 
 		List<EntregableGrupoDTO> le = ControladorEntregables.getInstancia().lineasTablaDeGrupo(nroGrupo, fechaEntregar, iteracion, etapa);
 		
+		float pctjeAvanceTP = ControladorEntregables.getInstancia().pctjeAvanceTP(le);
+		
 		out.print(
 				"<div class=\"row\">"
 				+ "<div class=\"col-sm-3\"><strong>Fecha a entregar</strong><input type=\"date\" name=\"fechaEntregar\" id=\"fechaEntregar\" class=\"form-control fechaEntregar \"></div>"
 				+ "<div class=\"col-sm-3\"><strong>Iteración</strong><input type=\"text\" name=\"iteracion\" id=\"iteracion\" class=\"form-control iteracion\"></div>"
 				+ "<div class=\"col-sm-3\"><strong>Etapa</strong><input type=\"text\" name=\"etapa\" id=\"etapa\" class=\"form-control etapa\"></div>"+
-		"<div class=\"col-sm-3\"><button class=\"btn btn-info btnFiltrarEntregables\" type=\"button\">Filtrar</button></div></div>"+
+		"<div class=\"col-sm-3\"><div><strong>"+pctjeAvanceTP+"%</strong></div><div><button class=\"btn btn-info btnFiltrarEntregables\" type=\"button\">Filtrar</button></div></div></div>"+
 				"<table id=\"my-table\" class=\"table table-striped table-responsive\">" + "<thead>"
 						+ "<th><strong>Iteración</strong></th>" + "<th><strong>Etapa</strong></th>"
 						+ "<th><strong>Entregable</strong></th>" + "<th><strong>Fecha carga</strong></th>"
