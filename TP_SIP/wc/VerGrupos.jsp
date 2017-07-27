@@ -77,8 +77,12 @@ body {
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-info">Agregar
 								Alumno</button>
-							<button type="button" class="btn btn-info btnNotaFinalClick">Puntuar
-								Doc. Final</button>
+								<c:set var="fechaEntregaDocFinal" scope="session"
+								value="${grupo.getFechaEntregaDocFinal()}" />
+							<c:if test="${not empty fechaEntregaDocFinal}">
+								<button type="button" class="btn btn-info btnNotaFinalClick">Puntuar
+										Doc. Final</button>
+							</c:if>
 						</div>
 					</div>
 					<div class="panel-body">
