@@ -147,7 +147,7 @@ public class ControladorEntregables {
 			boolean muestra = false;
 			// fecha entrega < filtro fecha
 			Date fentrega = egdto.getFechaEntrega();
-			if (dateEntrega==null || fentrega.compareTo(dateEntrega) <0 || fechaEntrega.equals(""))
+			if (dateEntrega==null || fentrega.compareTo(dateEntrega) <0 || fentrega.compareTo(dateEntrega) ==0 || fechaEntrega.equals(""))
 				if(iter==null || iter.equals(egdto.getNombreIteracion()) || iter.equals(""))
 					if(etapa==null || etapa.equals(egdto.getNombreEtapa()) || etapa.equals(""))
 						muestra = true;	
