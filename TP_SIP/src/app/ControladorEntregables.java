@@ -13,6 +13,7 @@ import enums.EstadoEntregable;
 import negocio.Entregable;
 import negocio.Grupo;
 import negocio.ObservacionEntregable;
+import comparadores.*;
 
 public class ControladorEntregables {
 
@@ -156,6 +157,8 @@ public class ControladorEntregables {
 			if (muestra)
 				listaEntregablesDTO.add(egdto);
 		}
+		
+		Ordenar.order(listaEntregablesDTO);
 		
 		return listaEntregablesDTO;
 	}
