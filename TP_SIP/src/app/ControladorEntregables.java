@@ -84,6 +84,10 @@ public class ControladorEntregables {
 			
 			EntregableGrupoDTO egdto = new EntregableGrupoDTO();
 			
+			egdto.setNroOrdenEntregable(e.getEntregableestructura().getNroOrden());
+			egdto.setNroOrdenEtapa(e.getEntregableestructura().getEtapa().getNroOrden());
+			egdto.setNroOrdenIteracion(e.getEntregableestructura().getEtapa().getIteracion().getNroOrden());
+			
 			// �ltima observacion del entregable
 			if(!e.getObservaciones().isEmpty())
 				egdto.setComentario(e.getObservaciones().get(e.getObservaciones().size() - 1).getComentario());

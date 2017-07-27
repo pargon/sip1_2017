@@ -18,6 +18,9 @@ public class EntregableGrupoDTO {
 	private Date fechaObs;
 	private String nombreArchivo;
 	private String rutaArchivo;
+	private int NroOrdenIteracion;
+	private int NroOrdenEtapa;
+	private int NroOrdenEntregable;
 	
 	public EntregableGrupoDTO() {}
 
@@ -116,8 +119,28 @@ public class EntregableGrupoDTO {
 	public void setRutaArchivo(String rutaArchivo) {
 		this.rutaArchivo = rutaArchivo;
 	}
-	
-	
-	
-	
+
+	public int getNroOrdenEtapa() {
+		return NroOrdenEtapa;
+	}
+
+	public void setNroOrdenEtapa(int nroOrdenEtapa) {
+		NroOrdenEtapa = nroOrdenEtapa;
+	}
+
+	public int getNroOrdenEntregable() {
+		return NroOrdenEntregable;
+	}
+
+	public void setNroOrdenEntregable(int nroOrdenEntregable) {
+		NroOrdenEntregable = nroOrdenEntregable;
+	}
+
+	public int getNroOrdenIteracion() {
+		return NroOrdenIteracion;
+	}
+
+	public void setNroOrdenIteracion(int nroOrdenIteracion) {
+		NroOrdenIteracion = nroOrdenIteracion;
+	}
 }

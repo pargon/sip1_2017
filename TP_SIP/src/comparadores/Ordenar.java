@@ -17,27 +17,27 @@ public class Ordenar
 	        public int compare(Object o1, Object o2)
 	        {
 
-	            String iter1 = ((EntregableGrupoDTO) o1).getNombreIteracion();
-	            String iter2 = ((EntregableGrupoDTO) o2).getNombreIteracion();
-	            int iterComp = iter1.compareTo(iter2);
+	            int iter1 = ((EntregableGrupoDTO) o1).getNroOrdenIteracion();
+	            int iter2 = ((EntregableGrupoDTO) o2).getNroOrdenIteracion();
+	            int iterComp = iter1 - iter2;
 
 	            if (iterComp != 0)
 	            {
 	               return iterComp;
 	            } else
 	            {
-	            	String etapa1 = ((EntregableGrupoDTO) o1).getNombreEtapa();
-		            String etapa2 = ((EntregableGrupoDTO) o2).getNombreEtapa();
-		            int etapaComp = etapa1.compareTo(etapa2);
+	            	int etapa1 = ((EntregableGrupoDTO) o1).getNroOrdenEtapa();
+		            int etapa2 = ((EntregableGrupoDTO) o2).getNroOrdenEtapa();
+		            int etapaComp = etapa1 - etapa2;
 		            
 	            	if (etapaComp != 0)
 	            	{
 	 	               return etapaComp;
 	 	            } else
 	 	            {
-	 	            	String entreg1 = ((EntregableGrupoDTO) o1).getNombreEntregable();
-			            String entreg2 = ((EntregableGrupoDTO) o2).getNombreEntregable();
-			            return entreg1.compareTo(entreg2);
+	 	            	int entreg1 = ((EntregableGrupoDTO) o1).getNroOrdenEntregable();
+	 	            	int entreg2 = ((EntregableGrupoDTO) o2).getNroOrdenEntregable();
+			            return entreg1 - entreg2;
 	 	            }
 	            }
 	        }
